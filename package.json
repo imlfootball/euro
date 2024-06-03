@@ -1,5 +1,5 @@
 {
-  "name": "euroapp",
+  "name": "euro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve-local": "ng serve --host 0.0.0.0",
-    "build-prod": "ng build --output-path docs --base-href /euro/"
+    "build-prod": "ng build --base-href /euro/ && npm run copy-docs",
+    "copy-docs": "xcopy .\\dist\\euro\\browser .\\docs\\ /S /Y"
   },
   "private": true,
   "dependencies": {
