@@ -14,7 +14,7 @@
   height: 45%;
 
   &.newsRotator {
-    height: 60%; 
+    height: 60%;
   }
 
   h2 {
@@ -47,14 +47,20 @@
   }
 }
 
-.newsRotatorContainer {
+.newsRotatorContainer,
+.newsInfoContainer {
   height: 90%;
+}
+
+.newsRow {
+  height: 100%;
 }
 
 .newsInfo {
   background: rgba(0,0,0,0.4);
   cursor: pointer;
   transition: all 0.5s;
+  height: 30%;
 
   &:hover {
     h4 {
@@ -69,14 +75,14 @@
   }
 
   .newsInfoPic {
-    width: 6rem;
-    height: 6rem;
+    width: 8rem;
+    height: 100%;
     flex-shrink: 0;
   }
 
   img {
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     transition: transform 0.5s;
   }
 }

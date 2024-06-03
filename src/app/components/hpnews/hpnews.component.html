@@ -14,7 +14,7 @@
 
     <div class="newsRotatorContainer relative">
       <ng-container *ngIf="$newsData | async as news">
-    
+
         <ng-container *ngFor="let chunk of newsChunks(news, 3); let i = index">
           <div class="newsRow news-{{i}}" *ngIf="currentPage === i">
             <div class="newsInfoContainer">
@@ -31,7 +31,7 @@
             </div>
           </div>
         </ng-container>
-    
+
         <div class="desktop pagination flex justify-content-between w-full absolute pb-2 bottom-0 ">
           <button [disabled]="currentPage < 1" (click)="previousPage()">
             <span class="material-symbols-outlined">
@@ -44,9 +44,9 @@
               </span>
           </button>
         </div>
-    
+
       </ng-container>
     </div>
-    
+
   </div>
 </div>
