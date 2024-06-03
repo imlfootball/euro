@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve-local": "ng serve --host 0.0.0.0"
+    "serve-local": "ng serve --host 0.0.0.0",
+    "build-prod": "ng build --output-path docs --base-href /euro/"
   },
   "private": true,
   "dependencies": {
