@@ -1,0 +1,9 @@
+@import "./../../../../variables.scss";
+
+.breadcrump {
+
+  .active {
+    color: $primaryColor;
+    pointer-events: none;
+  }
+}

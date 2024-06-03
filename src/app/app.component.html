@@ -1,0 +1,45 @@
+<layout [ngSwitch]="page">
+  <ng-container slot="header">
+    <cmp-header></cmp-header>
+  </ng-container>
+
+  <ng-container slot="hero" *ngSwitchCase="0">
+    <hero [background]="'url(assets/hero-bg.jpg)'">
+      <app-hpnews></app-hpnews>
+    </hero>
+  </ng-container>
+
+  <ng-container slot="main" >
+    <app-homepage *ngSwitchCase="0" />
+    <app-error *ngSwitchCase="11" />
+    <app-games *ngSwitchCase="1" />
+    <app-teams *ngSwitchCase="2" />
+    <app-stadiums *ngSwitchCase="3" />
+    <app-statistics *ngSwitchCase="4" />
+    <app-best-scorer *ngSwitchCase="5" />
+    <app-correct-score *ngSwitchCase="6" />
+    <app-bracket *ngSwitchCase="7" />
+    <app-quiz *ngSwitchCase="8" />
+    <app-ranking *ngSwitchCase="9" />
+    <app-faq *ngSwitchCase="10" />
+    <router-outlet></router-outlet>
+  </ng-container>
+
+  <ng-container slot="footer">
+    <cmp-footer></cmp-footer>
+  </ng-container>
+</layout>
+
+<app-dialog [(showDialog)]="showDialog" [dialogTitle]="'Bienvenue !'" [withOverlay]="true">
+  <p class="mt-0">
+    Bonjour à tous les passionnés de foot chez Infomil Mauritius ! Nous sommes ravis de vous présenter notre nouveau site dédié à l'UEFA EURO 2024. Bien qu'il ne soit pas affilié officiellement à l'UEFA, notre plateforme est un espace amusant et interactif pour que vous puissiez vous informer sur la compétition.</p>
+
+  <p class="mt-0">Rejoignez-nous pour des quiz excitants, des jeux divertissants et bien plus encore ! C'est l'occasion parfaite de vivre ensemble la magie du football et de soutenir vos équipes préférées. Alors, préparez-vous à plonger dans l'ambiance festive de l'EURO 2024 avec nous ! A vos crampons, let's GO!
+  </p>
+</app-dialog>
+
+<loader [(showLoader)]="showLoader" />
+
+<modal>
+  <p>Test modal content</p>
+</modal>

@@ -1,0 +1,25 @@
+@import "../../../../variables.scss";
+
+.login {
+
+  h3,
+  .icone {
+    color: $primaryColor;
+  }
+
+  .left {
+    width: 240px;
+    height: 432px;
+    aspect-ratio: 240/432;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .right {
+
+  }
+}

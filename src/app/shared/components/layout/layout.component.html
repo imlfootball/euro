@@ -1,0 +1,18 @@
+<header>
+  <ng-content select="[slot=header]"></ng-content>
+</header>
+
+<ng-content select="[slot=hero]"></ng-content>
+
+
+<div class="main">
+  <div class="p-3 sm:p-4" id="scrollContainer">
+    <div class="container">
+      <ng-content select="[slot=main]"></ng-content>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <ng-content select="[slot=footer]"></ng-content>
+</footer>

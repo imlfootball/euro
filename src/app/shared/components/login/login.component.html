@@ -1,0 +1,74 @@
+<div class="login flex flex-column sm:flex-row">
+
+  <div class="left desktop">
+    <img src="../../../../assets/vertical-banner-login-campaign.png" alt="" />
+  </div>
+
+  <div class="right pl-4 pr-4 pt-3 pb-3">
+    <div class="loginFlow" *ngIf="login">
+      <form [formGroup]="loginForm">
+        <h3 class="flex align-items-center"> <span class="material-symbols-outlined icone">
+          account_circle
+          </span>
+          Authentification</h3>
+        <p>Veuillez saisir vos identifiants pour participer aux différents jeux proposés</p>
+
+        <div class="input mt-4">
+          <input type="text" #trigramme value="" autocomplete="off" placeholder="Utilisez votre trigramme infomil" formControlName="login" />
+          <label>TRIGRAMME</label>
+          <span *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched" class="error mt-2 mb-2">
+            <ng-container *ngIf="loginForm.get('login')?.errors?.['required']">Ce champ est obligatoire</ng-container>
+            <ng-container *ngIf="loginForm.get('login')?.errors?.['pattern']">Le format du trigramme est incorrecte</ng-container>
+          </span>
+        </div>
+
+
+        <div class="input">
+          <input type="{{ passType }}" #pass value="" placeholder="Mot de passe"  autocomplete="off" formControlName="pass"/>
+          <label>MOT DE PASSE</label>
+          <span class="material-symbols-outlined togglePass" (click)="toggleType()">{{ visibility }}</span>
+          <span *ngIf="loginForm.get('pass')?.invalid && loginForm.get('pass')?.touched" class="error mt-2 mb-2">
+            <ng-container *ngIf="loginForm.get('pass')?.errors?.['required']">Ce champ est obligatoire</ng-container>
+            <ng-container *ngIf="loginForm.get('pass')?.errors?.['minlength']">Mot de passe trop court</ng-container>
+          </span>
+        </div>
+
+        <div class="flex flex-column align-items-end justify-content-between pt-2 pb-2 md:flex-row md:align-items-center md:mt-3">
+          <div class="registerText mb-3 sm:mb-0">
+            <span>Pas de compte? <button class="link ml-2" (click)="toggleRegister()">M'en créer un</button></span>
+          </div>
+          <button class="btn btn-primary" (click)="verifyLogin(trigramme.value, pass.value)" [disabled]="!loginForm.valid">Connexion</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="registerFlow" *ngIf="register">
+
+      <h3 class="flex align-items-center"> <span class="material-symbols-outlined icone">
+        person_add
+        </span>
+        Créer mon compte</h3>
+      <p>Veuillez saisir votre nom complet ainsi que votre trigramme(iml-xxx) pour recevoir un mot de passe</p>
+
+      <div class="input mt-4">
+        <input type="text" #nomPrenom value="" placeholder="Votre nom complet"  autocomplete="off" />
+        <label>Prénom & Nom</label>
+        <!-- <span class="error">Mot de passe incorrecte</span> -->
+      </div>
+
+      <div class="input ">
+        <input type="text" #trigrammeReg value="" autocomplete="off" placeholder="iml-xxx" />
+        <label>Votre trigramme (iml-xxx)</label>
+        <!-- <span class="error">Identifiant non trouvée</span> -->
+      </div>
+
+      <div class="flex flex-column align-items-end justify-content-between pt-2 pb-2 md:flex-row md:align-items-center md:mt-3">
+        <div class="registerText mb-3 sm:mb-0">
+          <span>Déja inscrit ? <button class="link ml-2" (click)="toggleRegister()">Se connecter</button></span>
+        </div>
+        <button class="btn btn-primary" (click)="registerAccount(trigrammeReg.value, nomPrenom.value)">Créer mon compte</button>
+      </div>
+
+    </div>
+  </div>
+</div>
