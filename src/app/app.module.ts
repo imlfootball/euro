@@ -37,6 +37,7 @@ import { HpnewsComponent } from './components/hpnews/hpnews.component';
 import { TeamDetailsComponent } from './shared/components/team-details/team-details.component';
 import { BreadcrumpComponent } from './shared/components/breadcrump/breadcrump.component';
 import { CacheInterceptor } from './shared/services/core/cacheinterceptor.interceptor';
+import { TabcontentComponent, TabContentDirective } from './shared/components/tabcontent/tabcontent.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,9 @@ import { CacheInterceptor } from './shared/services/core/cacheinterceptor.interc
     LoaderComponent,
     HpnewsComponent,
     TeamDetailsComponent,
-    BreadcrumpComponent
+    BreadcrumpComponent,
+    TabcontentComponent,
+    TabContentDirective
   ],
   imports: [
     BrowserModule,

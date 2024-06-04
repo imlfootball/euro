@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TeamsService {
 
-  private ApiKey: string = '950a2dd5907afd62c1e4d546176d0015057fef44e309b8c980fb36e90e54fbd8'
+  private ApiKey: string = '57bdd079639acaa7a00f1e66d996cf226ffa7f08bc2fc1239407341e92c244de'
   constructor(private http: HttpClient) { }
 
   getAllTeams(): Observable<Team[]> {
