@@ -1,24 +1,16 @@
 <div class="teamDetails absolute m-auto top-0 left-0 right-0 h-full bg-white">
   <div class="teamBanner p-4 h-6rem flex align-items-center md:h-10rem">
-    <img [src]="team.team_badge" alt="" class="md:w-7rem md:h-7rem" width="60" height="60" />
-    <h2 class="text-xl ml-4 pt-1 text-white md:text-6xl">{{ team.team_name | uppercase }}</h2>
+    <img [src]="team.badge_url" alt="" class="md:w-6rem md:h-auto" width="60" height="60" />
+    <h2 class="text-xl ml-4 pt-1 text-white md:text-6xl">{{ team.name | uppercase }}</h2>
   </div>
 
   <app-tabcontent>
     <ng-template tabContent title="News">
       <div>Contenue de news</div>
     </ng-template>
-    <ng-template tabContent title="Staff">
-      <div>Contenue concernant le staff</div>
-    </ng-template>
     <ng-template tabContent title="Joueurs">
-      <div *ngIf="team" class="grid gutter-1">
-        <div class="player col-2" *ngFor="let player of team.players">
-          <img src="{{ player.player_image}}" alt="" />
-          <span class="player_name">{{ player.player_name}}</span>
-          <span class="player_number"></span>
-          <span class="player_position"></span>
-        </div>
+      <div class="">
+        <span>Contenue concernant les joueurs</span>
       </div>
     </ng-template>
     <ng-template tabContent title="Matchs">

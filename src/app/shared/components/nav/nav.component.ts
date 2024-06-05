@@ -65,18 +65,13 @@ export class NavComponent implements OnInit, OnDestroy {
             "active": false
           },
           {
-            "label": "Le bon score",
-            "route": "bon-score",
+            "label": "Pronostiques",
+            "route": "pronostiques",
             "active": false
           },
           {
             "label": "Jeu du bracket",
             "route": "bracket",
-            "active": false
-          },
-          {
-            "label": "Quiz",
-            "route": "quiz",
             "active": false
           },
           {

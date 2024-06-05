@@ -40,15 +40,15 @@ export class AppComponent {
       case 'meilleur-buteur':
         this.page = 5;
         break;
-      case 'bon-score':
+      case 'pronostiques':
         this.page = 6;
         break;
       case 'bracket':
         this.page = 7;
         break;
-      case 'quiz':
-        this.page = 8;
-        break;
+      // case 'quiz':
+      //   this.page = 8;
+      //   break;
       case 'classement':
         this.page = 9;
         break;

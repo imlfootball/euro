@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Team } from '../../contracts/teams.contract';
+import { Teams } from '../../contracts/teams.contract';
 
 @Component({
   selector: 'team-details',
@@ -8,7 +8,7 @@ import { Team } from '../../contracts/teams.contract';
 })
 export class TeamDetailsComponent implements OnInit {
 
-  @Input() team!: Team;
+  @Input() team!: Teams;
 
   ngOnInit(): void {
     console.log(this.team);
