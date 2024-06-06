@@ -1,3 +1,5 @@
+@import "./../../../../variables.scss";
+
 .teamDetails {
   width: calc(100% - 1rem);
 
@@ -17,5 +19,16 @@
       bottom: 0;
       left: 0;
     }
+  }
+
+  .playerProfile {
+    background: #f1f1f1;
+    border-left: 0.5rem solid $red;
+    min-height: 4rem;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }

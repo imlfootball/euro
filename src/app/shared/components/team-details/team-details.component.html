@@ -5,47 +5,91 @@
   </div>
 
   <app-tabcontent>
-    <ng-template tabContent title="News">
-      <div>Contenue de news</div>
+    <ng-template tabContent title="A propos">
+      <div [innerHTML]="team.information"></div>
     </ng-template>
     <ng-template tabContent title="Joueurs">
       <!-- Joueurs -->
       <ng-container *ngIf="this.$teamPlayers | async as players; else loader">
-        <div class="playersView flex gap-4">
-            <div class="mr-4">
-            <h4>Forwards</h4>
-            <ng-container *ngFor="let player of players">
-              <ng-container *ngIf="player.position === 'Forward'">
-                <p>{{ player.name }}</p>
+        <div class="playersView">
+            <div class="">
+            <h4>Attaquants</h4>
+            <div class="grid gutter-2">
+              <ng-container *ngFor="let player of players">
+                <ng-container *ngIf="player.position === 'Forward'">
+                  <div class="col-fixed w-full sm:w-12rem">
+                    <div class="playerProfile">
+                      <div class="playerAvatar">
+
+                      </div>
+                      <div class="playerName">
+                        {{ player.name }}
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
           </div>
 
-          <div class="mr-4">
-            <h4>Midfielders</h4>
-            <ng-container *ngFor="let player of players">
-              <ng-container *ngIf="player.position === 'Midfielder'">
-                <p>{{ player.name }}</p>
+          <div class="">
+            <h4>Millieu</h4>
+            <div class="grid">
+              <ng-container *ngFor="let player of players">
+                <ng-container *ngIf="player.position === 'Midfielder'">
+                  <div class="col-fixed w-full sm:w-12rem">
+                    <div class="playerProfile">
+                      <div class="playerAvatar">
+
+                      </div>
+                      <div class="playerName">
+                        {{ player.name }}
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
           </div>
 
-          <div class="mr-4">
-            <h4>Defenders</h4>
-            <ng-container *ngFor="let player of players">
-              <ng-container *ngIf="player.position === 'Defender'">
-                <p>{{ player.name }}</p>
+          <div class="">
+            <h4>Défenseurs</h4>
+            <div class="grid">
+              <ng-container *ngFor="let player of players">
+                <ng-container *ngIf="player.position === 'Defender'">
+                  <div class="col-fixed w-full sm:w-12rem">
+                    <div class="playerProfile">
+                      <div class="playerAvatar">
+
+                      </div>
+                      <div class="playerName">
+                        {{ player.name }}
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
           </div>
 
           <div>
-            <h4>Goalkeepers</h4>
-            <ng-container *ngFor="let player of players">
-              <ng-container *ngIf="player.position === 'Goalkeeper'">
-                <p>{{ player.name }}</p>
+            <h4>Gardiens de buts</h4>
+            <div class="grid">
+              <ng-container *ngFor="let player of players">
+                <ng-container *ngIf="player.position === 'Goalkeeper'">
+                  <div class="col-fixed w-full sm:w-12rem">
+                    <div class="playerProfile">
+                      <div class="playerAvatar">
+
+                      </div>
+                      <div class="playerName">
+                        {{ player.name }}
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
           </div>
 
         </div>

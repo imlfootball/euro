@@ -22,6 +22,7 @@ export interface Teams {
   lost: number;
   flag_url: string;
   badge_url: string;
+  information: any;
   showDetails: boolean
 }
 
