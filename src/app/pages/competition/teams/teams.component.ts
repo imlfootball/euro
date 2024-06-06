@@ -14,13 +14,16 @@ import { breadCrump } from '../../../shared/components/breadcrump/breadcrump.com
 export class TeamsComponent implements OnInit {
 
   private euroService = inject(TeamsService);
+
   private stateService = inject(StateService);
 
-  $teamsData?: Observable<Teams[]>;
+  protected $teamsData?: Observable<Teams[]>;
 
-  breadCrumpDefault: breadCrump[] = [{label: 'Les Equipes', route: 'closeTeamDetails', active: true }];
+  protected breadCrumpDefault: breadCrump[] = [{label: 'Les Equipes', route: 'closeTeamDetails', active: true }];
 
-  breadCrumpData: breadCrump[] = [];
+  protected breadCrumpData: breadCrump[] = [];
+
+  protected choosenTeam!: Teams | null;
 
   ngOnInit(){
     this.breadCrumpData = this.breadCrumpDefault;
@@ -41,15 +44,16 @@ export class TeamsComponent implements OnInit {
     });
   }
 
-  showTeam(teamName: string): void {
+  showTeam( team: Teams): void {
     this.breadCrumpData = [];
     this.breadCrumpDefault[0].active = false;
-    this.breadCrumpData.push(this.breadCrumpDefault[0], {label: teamName, route: '', active: true });
+    this.breadCrumpData.push(this.breadCrumpDefault[0], {label: team.name, route: '', active: true });
     window.scroll({
       top: 0,
       left: 0,
       behavior: 'smooth'
     });
+    this.choosenTeam = team;
   }
 
   resetTeamSelection(ev: string): void {
@@ -57,6 +61,7 @@ export class TeamsComponent implements OnInit {
       this.breadCrumpData = [];
       this.breadCrumpData.push(this.breadCrumpDefault[0]);
       this.setTeamsData();
+      this.choosenTeam = null;
     }
   }
 
