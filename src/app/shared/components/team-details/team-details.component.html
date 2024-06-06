@@ -1,4 +1,4 @@
-<div class="teamDetails absolute m-auto top-0 left-0 right-0 h-full bg-white">
+<div class="teamDetails h-full min-h-full bg-white border-round-2xl overflow-hidden">
   <div class="teamBanner p-4 h-6rem flex align-items-center md:h-10rem">
     <img [src]="team.badge_url" alt="" class="md:w-6rem md:h-auto" width="60" height="60" />
     <h2 class="text-xl ml-4 pt-1 text-white md:text-6xl">{{ team.name | uppercase }}</h2>
@@ -9,12 +9,61 @@
       <div>Contenue de news</div>
     </ng-template>
     <ng-template tabContent title="Joueurs">
-      <div class="">
-        <span>Contenue concernant les joueurs</span>
-      </div>
+      <!-- Joueurs -->
+      <ng-container *ngIf="this.$teamPlayers | async as players; else loader">
+        <div class="playersView flex gap-4">
+            <div class="mr-4">
+            <h4>Forwards</h4>
+            <ng-container *ngFor="let player of players">
+              <ng-container *ngIf="player.position === 'Forward'">
+                <p>{{ player.name }}</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <div class="mr-4">
+            <h4>Midfielders</h4>
+            <ng-container *ngFor="let player of players">
+              <ng-container *ngIf="player.position === 'Midfielder'">
+                <p>{{ player.name }}</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <div class="mr-4">
+            <h4>Defenders</h4>
+            <ng-container *ngFor="let player of players">
+              <ng-container *ngIf="player.position === 'Defender'">
+                <p>{{ player.name }}</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <div>
+            <h4>Goalkeepers</h4>
+            <ng-container *ngFor="let player of players">
+              <ng-container *ngIf="player.position === 'Goalkeeper'">
+                <p>{{ player.name }}</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+        </div>
+      </ng-container>
+
     </ng-template>
     <ng-template tabContent title="Matchs">
-      <div>Les matchs de cette equipe pour l'euro 2024</div>
+      <div>
+        <ng-container *ngIf="this.$teamMatches | async as matches; else loader">
+          <ng-container *ngFor="let match of matches">
+            <p> {{ match.date | date : 'mediumDate' }} {{ match.date | date:'shortTime' }}, {{ match.phase }}, {{ match.team_a }} vs {{ match.team_b }}, Stadium : {{ match.stadium}}</p>
+          </ng-container>
+        </ng-container>
+      </div>
     </ng-template>
   </app-tabcontent>
 </div>
+
+<ng-template #loader>
+  <loader [showLoader]="true" />
+</ng-template>
