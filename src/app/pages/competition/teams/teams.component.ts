@@ -38,10 +38,6 @@ export class TeamsComponent implements OnInit {
         return teams.sort((a, b) => a.name.localeCompare(b.name));
       })
     )
-
-    this.$teamsData?.subscribe((teams: Teams[]) => {
-      console.log(teams);
-    });
   }
 
   showTeam( team: Teams): void {

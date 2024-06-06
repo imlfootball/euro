@@ -6,12 +6,17 @@
 
   <app-tabcontent>
     <ng-template tabContent title="A propos">
-      <div [innerHTML]="team.information"></div>
+      <!-- Poster Equipe -->
+      <div class="">
+        <img src="assets/teams/poster/{{team.name | lowercase }}.jpg" width="100%" height="auto" alt="{{team.name}}" />
+      </div>
+      <!-- A propos de l'equipe -->
+      <div [innerHTML]="team.information" class="p-4"></div>
     </ng-template>
     <ng-template tabContent title="Joueurs">
       <!-- Joueurs -->
       <ng-container *ngIf="this.$teamPlayers | async as players; else loader">
-        <div class="playersView">
+        <div class="playersView" class="p-4">
             <div class="">
             <h4>Attaquants</h4>
             <div class="grid gutter-2">
@@ -97,7 +102,7 @@
 
     </ng-template>
     <ng-template tabContent title="Matchs">
-      <div>
+      <div class="p-4">
         <ng-container *ngIf="this.$teamMatches | async as matches; else loader">
           <ng-container *ngFor="let match of matches">
             <p> {{ match.date | date : 'mediumDate' }} {{ match.date | date:'shortTime' }}, {{ match.phase }}, {{ match.team_a }} vs {{ match.team_b }}, Stadium : {{ match.stadium}}</p>
