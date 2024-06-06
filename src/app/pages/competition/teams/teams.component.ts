@@ -14,6 +14,7 @@ import { breadCrump } from '../../../shared/components/breadcrump/breadcrump.com
 export class TeamsComponent implements OnInit {
 
   private euroService = inject(TeamsService);
+
   private stateService = inject(StateService);
 
   protected $teamsData?: Observable<Teams[]>;
