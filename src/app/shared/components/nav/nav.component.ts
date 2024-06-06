@@ -60,7 +60,7 @@ export class NavComponent implements OnInit, OnDestroy {
         "active": false,
         "sub": [
           {
-            "label": "Meilleur Buteur",
+            "label": "Golden Players",
             "route": "meilleur-buteur",
             "active": false
           },
@@ -75,7 +75,7 @@ export class NavComponent implements OnInit, OnDestroy {
             "active": false
           },
           {
-            "label": "Classement",
+            "label": "Classement IML",
             "route": "classement",
             "active": false
           }

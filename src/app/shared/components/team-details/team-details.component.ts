@@ -17,7 +17,6 @@ export class TeamDetailsComponent implements OnInit {
 
   private teamsService = inject(TeamsService);
   private matchesService = inject(MatchesService);
-  private groupedPlayers: { [key: string]: Players[] } = {};
 
   $teamMatches!: Observable<Matches[]>;
   $teamPlayers!: Observable<Players[]>;
