@@ -31,4 +31,10 @@
     justify-content: center;
     text-align: center;
   }
+
+  @media screen and (min-width: 576px){
+    .matchDetails .sm\:col-4 {
+      width: 32% !important;
+    }  
+  }
 }

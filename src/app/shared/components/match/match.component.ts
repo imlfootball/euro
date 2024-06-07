@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Matches } from '../../contracts/matches.contract';
 
 @Component({
   selector: 'app-match',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class MatchComponent {
 
+  @Input() match!: Matches;
+  
 }

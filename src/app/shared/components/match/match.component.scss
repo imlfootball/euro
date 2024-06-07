@@ -1,0 +1,27 @@
+.match {
+  background: white;
+  border: 1px solid #efefef;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+
+  .teamName {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .flag {
+    width: 30px;
+    height: 30px;
+  }
+
+  .phase,
+  .time,
+  .time span {
+    color: #acacac;
+    font-size: 0.85rem;
+  }
+
+  .time span {
+    margin-top: 2px;
+  }
+}

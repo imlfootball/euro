@@ -1,5 +1,9 @@
 // Modules
-import { NgModule, isDevMode } from '@angular/core';
+import { LOCALE_ID, NgModule, isDevMode } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
+
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -85,7 +89,10 @@ import { TabcontentComponent, TabContentDirective } from './shared/components/ta
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

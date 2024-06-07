@@ -1,0 +1,11 @@
+@import "../../../../variables.scss";
+
+.filter {
+  background: $darkPrimary;
+}
+
+@media screen and (min-width: 576px){
+  .sm\:col-4 {
+    width: 32% !important;
+  }  
+}

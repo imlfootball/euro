@@ -6,16 +6,16 @@
     <ng-container *ngFor="let list of navList; index as i; last as isLast">
 
       <ng-container *ngIf="!list.sub; else subButton">
-        <button [ngClass]="{'mr-0': isLast && !list.sub, 'lg:mr-4': !isLast && !list.sub, 'active' : list.active }" class="menuBtn lg:ml-4 lg:text-base" title="list.label" (click)="navTo(list.route, list.label)"> 
+        <button [ngClass]="{'mr-0': isLast && !list.sub, 'lg:mr-4': !isLast && !list.sub, 'active' : list.active }" class="menuBtn lg:ml-4 lg:text-base" [title]="list.label" (click)="navTo(list.route, list.label)"> 
           {{ list.label }}</button>     
       </ng-container>
 
       <ng-template #subButton>
-        <button [ngClass]="{'mr-0': isLast && !list.sub, 'lg:mr-4': !isLast && !list.sub, 'active' : list.active }" class="menuBtn lg:ml-4 lg:text-base" title="list.label"> {{ list.label }}
+        <button [ngClass]="{'mr-0': isLast && !list.sub, 'lg:mr-4': !isLast && !list.sub, 'active' : list.active }" class="menuBtn lg:ml-4 lg:text-base" [title]="list.label"> {{ list.label }}
           <span class="material-symbols-outlined ml-2 text-primary text-xs iconExpand">expand_more</span>
           <div class="sub">
             <ng-container *ngFor="let subitem of list.sub">
-              <button [ngClass]="{'active': subitem.active}" class="text-base" title="subitem.label" (click)="navTo(subitem.route, subitem.label)"> {{ subitem.label }}</button>
+              <button [ngClass]="{'active': subitem.active}" class="text-base" [title]="subitem.label" (click)="navTo(subitem.route, subitem.label)"> {{ subitem.label }}</button>
             </ng-container>
           </div>
         </button>
