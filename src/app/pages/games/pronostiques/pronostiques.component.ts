@@ -1,16 +1,16 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatchesService } from '../../../shared/services/content/matches.service';
-import { Matches } from '../../../shared/contracts/matches.contract';
 import { Observable } from 'rxjs';
+import { Matches } from '../../../shared/contracts/matches.contract';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrl: './games.component.scss'
+  selector: 'app-pronostiques',
+  templateUrl: './pronostiques.component.html',
+  styleUrl: './pronostiques.component.scss'
 })
-export class GamesComponent implements OnInit{
-
+export class PronostiquesComponent {
+  
   private matchesService = inject(MatchesService);
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
@@ -23,7 +23,7 @@ export class GamesComponent implements OnInit{
 
   groupMatchesByDate(matches: Matches[]): { [key: string]: Matches[] } {
     return matches.reduce((groups, match) => {
-      const date = match.date.split(' ')[0]; // Extract the date part only
+      const date = match.date.split(' ')[0];
       if (!groups[date]) {
         groups[date] = [];
       }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CorrectScoreComponent } from './correct-score.component';
+import { NumberInputComponent } from './number-input.component';
 
-describe('CorrectScoreComponent', () => {
-  let component: CorrectScoreComponent;
-  let fixture: ComponentFixture<CorrectScoreComponent>;
+describe('NumberInputComponent', () => {
+  let component: NumberInputComponent;
+  let fixture: ComponentFixture<NumberInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CorrectScoreComponent]
+      declarations: [NumberInputComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CorrectScoreComponent);
+    fixture = TestBed.createComponent(NumberInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -25,7 +26,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 import { DialogComponent } from './shared/components/dialog/dialog.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { BestScorerComponent } from './pages/games/best-scorer/best-scorer.component';
-import { CorrectScoreComponent } from './pages/games/correct-score/correct-score.component';
+import { PronostiquesComponent } from './pages/games/pronostiques/pronostiques.component';
 import { BracketComponent } from './pages/games/bracket/bracket.component';
 import { QuizComponent } from './pages/games/quiz/quiz.component';
 import { RankingComponent } from './pages/games/ranking/ranking.component';
@@ -42,6 +43,7 @@ import { TeamDetailsComponent } from './shared/components/team-details/team-deta
 import { BreadcrumpComponent } from './shared/components/breadcrump/breadcrump.component';
 import { CacheInterceptor } from './shared/services/core/cacheinterceptor.interceptor';
 import { TabcontentComponent, TabContentDirective } from './shared/components/tabcontent/tabcontent.component';
+import { NumberInputComponent } from './shared/components/number-input/number-input.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { TabcontentComponent, TabContentDirective } from './shared/components/ta
     DialogComponent,
     NavComponent,
     BestScorerComponent,
-    CorrectScoreComponent,
+    PronostiquesComponent,
     BracketComponent,
     QuizComponent,
     RankingComponent,
@@ -75,11 +77,13 @@ import { TabcontentComponent, TabContentDirective } from './shared/components/ta
     TeamDetailsComponent,
     BreadcrumpComponent,
     TabcontentComponent,
-    TabContentDirective
+    TabContentDirective,
+    NumberInputComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
