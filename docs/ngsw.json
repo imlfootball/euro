@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1717698376691,
+  "timestamp": 1717776389475,
   "index": "/euro/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "/euro/favicon.ico",
         "/euro/index.html",
-        "/euro/main-C5Q6R6QS.js",
+        "/euro/main-7ZDJX7SV.js",
         "/euro/manifest.webmanifest",
         "/euro/polyfills-S3BTP7ME.js",
-        "/euro/styles-EVSWVTJG.css"
+        "/euro/styles-UJKCRQR6.css"
       ],
       "patterns": []
     },
@@ -79,6 +79,7 @@
         "/euro/assets/flags/turkey.png",
         "/euro/assets/flags/ukraine.gif",
         "/euro/assets/flags/ukraine.png",
+        "/euro/assets/flags/unknown.png",
         "/euro/assets/fonts/euclid-square-400.woff2",
         "/euro/assets/fonts/pro-fa-solid-900-0.woff2",
         "/euro/assets/fonts/pro-fa-solid-900-12.woff2",
@@ -195,6 +196,7 @@
     "/euro/assets/flags/turkey.png": "985cbf67c9de6c8fdfa68ad55239f41e8fbfb186",
     "/euro/assets/flags/ukraine.gif": "8754e4174349a05eda2df520ed39d8ec44df0d0a",
     "/euro/assets/flags/ukraine.png": "b58a98dd66f82d80db8f27970983b653668b433e",
+    "/euro/assets/flags/unknown.png": "c50186c8a06a758316a8cda24da27895414712e4",
     "/euro/assets/fonts/euclid-square-400.woff2": "16d8d24029e2ecb23263e2d2a05bb4e553dcae16",
     "/euro/assets/fonts/pro-fa-solid-900-0.woff2": "ff99959f4fdbc1a41e91deee68c9475dfd79d57f",
     "/euro/assets/fonts/pro-fa-solid-900-12.woff2": "d047ae7ac04c04a989296addae46bffc1e1cfa2b",
@@ -248,8 +250,8 @@
     "/euro/assets/vertical-banner-login-campaign.avif": "9d21fe7e07bc70f2f9d2bb31420dfd996463fa36",
     "/euro/assets/vertical-banner-login-campaign.png": "5d59c9020cc8878ef07eba486d51c6885d341500",
     "/euro/favicon.ico": "3281b8038d436dfbddede41cf85b6a32081db1fe",
-    "/euro/index.html": "3252e9f0edd256f91cb27856fbe21a1205a4c80b",
-    "/euro/main-C5Q6R6QS.js": "9b0844c8d0b0a5953c62bf18f72e0d3991f6c117",
+    "/euro/index.html": "bc1c6d0711826b06fa550319f0d23bcb3ae4bf46",
+    "/euro/main-7ZDJX7SV.js": "289a835b05f3d6f1e52063a9e63e8d7a3240032c",
     "/euro/manifest.webmanifest": "06c2bd91496a98c9fd1b84e275e43e84e707e1a3",
     "/euro/media/corner-bg-YOV6DW44.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
     "/euro/media/footer-6CRP6CMM.png": "13e0a6b30f26ad4c69a168bc3ec44637f0e17859",
@@ -259,7 +261,7 @@
     "/euro/media/uefa-euro-extraboldnarrow.e18195f-5DXNLZNB.woff2": "55748adb76349b2184fd9fa8c305a4898d38851f",
     "/euro/media/uefa-euro-heavyextended.7e56f30-UGNHUIOS.woff2": "9627812bce866f1304ad124df9a11449b565a9ba",
     "/euro/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/euro/styles-EVSWVTJG.css": "8d39e28e73a87dec1a58b76d67205c415d85271b"
+    "/euro/styles-UJKCRQR6.css": "caf609f4e8f7ffcded5e61a8692ce3c0cd7f9847"
   },
   "navigationUrls": [
     {
