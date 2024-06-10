@@ -44,6 +44,7 @@ import { BreadcrumpComponent } from './shared/components/breadcrump/breadcrump.c
 import { CacheInterceptor } from './shared/services/core/cacheinterceptor.interceptor';
 import { TabcontentComponent, TabContentDirective } from './shared/components/tabcontent/tabcontent.component';
 import { NumberInputComponent } from './shared/components/number-input/number-input.component';
+import { WindrawComponent } from './shared/components/windraw/windraw.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { NumberInputComponent } from './shared/components/number-input/number-in
     BreadcrumpComponent,
     TabcontentComponent,
     TabContentDirective,
-    NumberInputComponent
+    NumberInputComponent,
+    WindrawComponent
   ],
   imports: [
     BrowserModule,

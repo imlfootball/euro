@@ -1,12 +1,24 @@
+<ng-container *ngIf="$userState | async as userState;">
 <div class="subHeader pt-2 pb-2 pl-3 pr-3 sm:pr-4 sm:pl-4">
   <div class="container h-full flex justify-content-between align-items-center">
     <span class="teaser text-xs flex align-items-center">
       <span class="material-symbols-outlined text-lg mr-1">
         sports_esports
       </span> IML FOOTBALL CHALLENGE - UEFA EURO 2024™</span>
-    <button class="btnLogin" (click)="showLoginModal()">
-      <span class="material-symbols-outlined mr-0 text-xl">account_circle</span>
-    </button>
+
+
+
+        <ng-container *ngIf="userState.email; else login">
+          <div class="loggedInUser">Hello {{ userState.last_name }}</div>
+        </ng-container>
+
+        <ng-template #login>
+          <button class="btnLogin" (click)="showLoginModal()">
+            <span class="material-symbols-outlined mr-0 text-xl">account_circle</span>
+          </button>
+        </ng-template>
+
+
   </div>
 </div>
 
@@ -20,6 +32,9 @@
   </div>
 </div>
 
-<modal [(showModal)]="showLogin" [modalSize]="'md'">
+<modal [(showModal)]="showLogin" [modalSize]="'md'" *ngIf="!userState.email">
   <app-login [modalOn]="showLogin"></app-login>
 </modal>
+
+
+</ng-container>

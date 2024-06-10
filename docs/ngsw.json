@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1717776389475,
+  "timestamp": 1718020783781,
   "index": "/euro/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "/euro/favicon.ico",
         "/euro/index.html",
-        "/euro/main-7ZDJX7SV.js",
+        "/euro/main-MFANZ2GK.js",
         "/euro/manifest.webmanifest",
         "/euro/polyfills-S3BTP7ME.js",
-        "/euro/styles-UJKCRQR6.css"
+        "/euro/styles-VWGVPZCZ.css"
       ],
       "patterns": []
     },
@@ -31,6 +31,7 @@
         "/euro/assets/404.png",
         "/euro/assets/campaign-logo.png",
         "/euro/assets/corner-bg.png",
+        "/euro/assets/down-arrow.png",
         "/euro/assets/flags/albania.gif",
         "/euro/assets/flags/albania.png",
         "/euro/assets/flags/austria.gif",
@@ -130,9 +131,11 @@
         "/euro/assets/teams/poster/switzerland.jpg",
         "/euro/assets/teams/poster/turkey.jpg",
         "/euro/assets/teams/poster/ukraine.jpg",
+        "/euro/assets/up-arrow.png",
         "/euro/assets/vertical-banner-login-campaign.avif",
         "/euro/assets/vertical-banner-login-campaign.png",
         "/euro/media/corner-bg-YOV6DW44.png",
+        "/euro/media/down-arrow-V4UHFK2W.png",
         "/euro/media/footer-6CRP6CMM.png",
         "/euro/media/line-pattern-VMFQ46SL.png",
         "/euro/media/uefa-euro-bold.3d9f1b7-LEOQ526F.woff2",
@@ -148,6 +151,7 @@
     "/euro/assets/404.png": "2214984da36650789da8d135ab1b0c55c2ac41e5",
     "/euro/assets/campaign-logo.png": "19791cf7718016a9341f644752c8008f0dc14b84",
     "/euro/assets/corner-bg.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
+    "/euro/assets/down-arrow.png": "b8586e43900253f8c394ee1537614aecc9f369bb",
     "/euro/assets/flags/albania.gif": "8e36c43d01960aaf107dee447f96a2befdfb2233",
     "/euro/assets/flags/albania.png": "91d7565924ddbf8c599791e56252d41bb1cac0cd",
     "/euro/assets/flags/austria.gif": "7076e2cb01fa08b04fdbeda1353fd02faa95732b",
@@ -247,13 +251,15 @@
     "/euro/assets/teams/poster/switzerland.jpg": "9be0cab66e496c339a006678c3778963f5168e47",
     "/euro/assets/teams/poster/turkey.jpg": "6e2cf666ba68aba74262f70a0df7efd85a084760",
     "/euro/assets/teams/poster/ukraine.jpg": "c257bac6d4c1a23bf36c90b497148efbe6804a92",
+    "/euro/assets/up-arrow.png": "cef350faa73058074dd9b7616a8b22fe2f21895f",
     "/euro/assets/vertical-banner-login-campaign.avif": "9d21fe7e07bc70f2f9d2bb31420dfd996463fa36",
     "/euro/assets/vertical-banner-login-campaign.png": "5d59c9020cc8878ef07eba486d51c6885d341500",
     "/euro/favicon.ico": "3281b8038d436dfbddede41cf85b6a32081db1fe",
-    "/euro/index.html": "bc1c6d0711826b06fa550319f0d23bcb3ae4bf46",
-    "/euro/main-7ZDJX7SV.js": "289a835b05f3d6f1e52063a9e63e8d7a3240032c",
+    "/euro/index.html": "ed555607a8bf9585b51498bcbd278a88778d5430",
+    "/euro/main-MFANZ2GK.js": "151dfbb22f5f551e5b1cc97bd0449036d84041d3",
     "/euro/manifest.webmanifest": "06c2bd91496a98c9fd1b84e275e43e84e707e1a3",
     "/euro/media/corner-bg-YOV6DW44.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
+    "/euro/media/down-arrow-V4UHFK2W.png": "b8586e43900253f8c394ee1537614aecc9f369bb",
     "/euro/media/footer-6CRP6CMM.png": "13e0a6b30f26ad4c69a168bc3ec44637f0e17859",
     "/euro/media/line-pattern-VMFQ46SL.png": "2c01b20e5e9cb80882070fed3e52936cdb8da11e",
     "/euro/media/uefa-euro-bold.3d9f1b7-LEOQ526F.woff2": "528f1df944c7138a1ce8b61635ba4cd1c479695c",
@@ -261,7 +267,7 @@
     "/euro/media/uefa-euro-extraboldnarrow.e18195f-5DXNLZNB.woff2": "55748adb76349b2184fd9fa8c305a4898d38851f",
     "/euro/media/uefa-euro-heavyextended.7e56f30-UGNHUIOS.woff2": "9627812bce866f1304ad124df9a11449b565a9ba",
     "/euro/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/euro/styles-UJKCRQR6.css": "caf609f4e8f7ffcded5e61a8692ce3c0cd7f9847"
+    "/euro/styles-VWGVPZCZ.css": "e611e85fce65f3d16dab0a38828b211fd2b3d77b"
   },
   "navigationUrls": [
     {

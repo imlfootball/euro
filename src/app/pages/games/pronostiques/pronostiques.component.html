@@ -2,14 +2,14 @@
   <div class="container">
     <h1 class="text-white flex">
       <span class="material-symbols-outlined">sports_esports</span>
-      Pronostiques
+      Pronostiqueur
     </h1>
   </div>
 </div>
 
 <div class="container pt-4">
   
-  <div *ngIf="$groupedMatches | async as groupedMatches; else loader">
+  <div *ngIf="$groupedMatches | async as groupedMatches; else loader;">
 
     <ng-container *ngFor="let date of getDates(groupedMatches)">
       <h2 class="capitalize">{{ date | date: 'fullDate' }}</h2>

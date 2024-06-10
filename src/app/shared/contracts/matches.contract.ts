@@ -25,4 +25,7 @@ export interface Matches {
     halftime_point: number | null;
     scorer_point: number | null;
     stadium: string;
+    fulltime: boolean | null;
+    halftime: boolean | null;
+    scorer: boolean | null;
 }

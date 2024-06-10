@@ -15,6 +15,7 @@ export class PronostiquesComponent {
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
 
+
   ngOnInit(): void {
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
@@ -22,6 +23,8 @@ export class PronostiquesComponent {
   }
 
   groupMatchesByDate(matches: Matches[]): { [key: string]: Matches[] } {
+    // console.log(matches);
+    
     return matches.reduce((groups, match) => {
       const date = match.date.split(' ')[0];
       if (!groups[date]) {

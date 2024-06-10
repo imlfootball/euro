@@ -12,7 +12,7 @@
           </span>
           Authentification</h3>
         <p>Veuillez saisir vos identifiants pour participer aux différents jeux proposés</p>
-
+<!-- 
         <div class="input mt-4">
           <input type="text" #trigramme value="" autocomplete="off" placeholder="Utilisez votre trigramme infomil" formControlName="login" />
           <label>TRIGRAMME</label>
@@ -20,8 +20,16 @@
             <ng-container *ngIf="loginForm.get('login')?.errors?.['required']">Ce champ est obligatoire</ng-container>
             <ng-container *ngIf="loginForm.get('login')?.errors?.['pattern']">Le format du trigramme est incorrecte</ng-container>
           </span>
-        </div>
+        </div> -->
 
+        <div class="input mt-4">
+          <input type="text" #email value="" autocomplete="off" placeholder="Veuillez renseigner votre email" formControlName="email" />
+          <label>EMAIL</label>
+          <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error mt-2 mb-2">
+            <ng-container *ngIf="loginForm.get('email')?.errors?.['required']">Ce champ est obligatoire</ng-container>
+            <ng-container *ngIf="loginForm.get('email')?.errors?.['pattern']">Le format de l'email est incorrecte</ng-container>
+          </span>
+        </div>
 
         <div class="input">
           <input type="{{ passType }}" #pass value="" placeholder="Mot de passe"  autocomplete="off" formControlName="pass"/>
@@ -33,11 +41,15 @@
           </span>
         </div>
 
+        <span *ngIf="otherError" class="error mt-4 mb-2">
+          Email / Mot de passe incorrecte, veuillez re-essayer. Si vous n'arrivez toujours pas a vous identifiez, veuillez vous rapproché de l'équipe organisateur.
+        </span>
+
         <div class="flex flex-column align-items-end justify-content-between pt-2 pb-2 md:flex-row md:align-items-center md:mt-3">
           <div class="registerText mb-3 sm:mb-0">
             <span>Pas de compte? <button class="link ml-2" (click)="toggleRegister()">M'en créer un</button></span>
           </div>
-          <button class="btn btn-primary" (click)="verifyLogin(trigramme.value, pass.value)" [disabled]="!loginForm.valid">Connexion</button>
+          <button class="btn btn-primary" (click)="verifyLogin(email.value, pass.value)" [disabled]="!loginForm.valid">Connexion</button>
         </div>
       </form>
     </div>
@@ -48,11 +60,11 @@
         person_add
         </span>
         Créer mon compte</h3>
-      <p>Veuillez saisir votre nom complet ainsi que votre trigramme(iml-xxx) pour recevoir un mot de passe</p>
+      <p>Veuillez saisir votre email, trigramme(iml-xxx) ainsi qu'un mot de passe</p>
 
       <div class="input mt-4">
-        <input type="text" #nomPrenom value="" placeholder="Votre nom complet"  autocomplete="off" />
-        <label>Prénom & Nom</label>
+        <input type="email" #emailReg value="" placeholder="Votre nom complet"  autocomplete="off" />
+        <label>Email</label>
         <!-- <span class="error">Mot de passe incorrecte</span> -->
       </div>
 
@@ -66,7 +78,7 @@
         <div class="registerText mb-3 sm:mb-0">
           <span>Déja inscrit ? <button class="link ml-2" (click)="toggleRegister()">Se connecter</button></span>
         </div>
-        <button class="btn btn-primary" (click)="registerAccount(trigrammeReg.value, nomPrenom.value)">Créer mon compte</button>
+        <button class="btn btn-primary" (click)="registerAccount(trigrammeReg.value, emailReg.value)">Créer mon compte</button>
       </div>
 
     </div>

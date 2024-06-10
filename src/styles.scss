@@ -194,16 +194,28 @@ div.input {
   }
 
   select {
-    width: 45%;
-    background: transparent;
-    padding: 1rem;
-    color: white;
-    margin: 0 10px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background: white url(assets/down-arrow.png) no-repeat;
+    background-position: right 10px center;
     border-radius: 5px;
-    border: 1px solid #1d868d;
+    padding: 15px 40px 15px 10px;
+    border: 1px solid $inputBorder;
+    color: #222;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: none!important;
+      border: 1px solid $primaryColor;
+    }
 
     option {
-      background: #222222;
+      padding: 0.25rem;
+      background: transparent;
+
     }
   }
 
@@ -220,11 +232,12 @@ div.input {
     }
   }
 
-  .error {
-    color: $red;
-    font-size: 12px;
-    display: flex;
-  }
+}
+
+.error {
+  color: $red;
+  font-size: 12px;
+  display: flex;
 }
 
 .btn {

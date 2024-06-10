@@ -1,7 +1,7 @@
 <div class="match">
   <div class="flex justify-content-between align-items-center mb-3">
     <div class="flex justify-content-center">
-      <span class="phase mt-0" *ngIf="match.group; else phase">Groupe {{ match.group }}</span>
+      <span class="phase mt-0" *ngIf="match.group; else phase">Groupe {{ match.group }} - M{{ match.id }}</span>
       <ng-template #phase>
         <span class="phase mt-0">{{ match.phase }}</span>
       </ng-template>
@@ -59,44 +59,97 @@
         </div>
       </div>
 
-      <div class="flex justify-content-center mt-3">
-        <span class="label">Score mi-temps</span>
+      <div class="flex justify-content-center mt-2">
+        <span class="label">Qui remporte la rencontre ?</span>
       </div>
 
-      <div class="grid justify-content-center mb-3">
-        <div class="col-4">
-          <div class="teamA flex flex-column align-items-center">
-            <app-number-input [(num)]="halfTimeA"></app-number-input>
-          </div>
-        </div>
-        <div class="flex-shrink-0 w-4rem flex justify-content-center align-items-center">
-          |
-        </div>
-        <div class="col-4">
-          <div class="teamB flex flex-column align-items-center">
-            <app-number-input [(num)]="halfTimeB"></app-number-input>
-          </div>
+      <div class="grid justify-content-center mt-2 mb-2">
+        <div class="col-12">
+          <app-windraw [teamA]="match.team_a" [teamB]="match.team_b" [(outCome)]="matchOutcome" [disabled]="disabled" />
         </div>
       </div>
 
-      <div class="flex justify-content-center mt-3">
-        <span class="label">Score Final</span>
-      </div>
+      <ng-container *ngIf="match.fulltime">
+        <div class="flex justify-content-center mt-2">
+          <span class="label">Score Final</span>
+        </div>
 
-      <div class="grid justify-content-center mb-3">
-        <div class="col-4">
-          <div class="teamA flex flex-column align-items-center">
-            <app-number-input [(num)]="fullTimeA"></app-number-input>
+        <div class="grid justify-content-center">
+          <div class="col-4">
+            <div class="teamA flex flex-column align-items-center">
+              <app-number-input [(num)]="fullTimeA" [disabled]="disabled"></app-number-input>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-4rem flex justify-content-center align-items-center">
+            |
+          </div>
+          <div class="col-4">
+            <div class="teamB flex flex-column align-items-center">
+              <app-number-input [(num)]="fullTimeB" [disabled]="disabled"></app-number-input>
+            </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-4rem flex justify-content-center align-items-center">
-          |
+      </ng-container>
+
+      <ng-container *ngIf="match.halftime">
+        <div class="flex justify-content-center">
+          <span class="label">Score mi-temps</span>
         </div>
-        <div class="col-4">
-          <div class="teamB flex flex-column align-items-center">
-            <app-number-input [(num)]="fullTimeB"></app-number-input>
+
+        <div class="grid justify-content-center">
+          <div class="col-4">
+            <div class="teamA flex flex-column align-items-center">
+              <app-number-input [(num)]="halfTimeA"  [disabled]="disabled"></app-number-input>
+            </div>
+          </div>
+          <div class="flex-shrink-0 w-4rem flex justify-content-center align-items-center">
+            |
+          </div>
+          <div class="col-4">
+            <div class="teamB flex flex-column align-items-center">
+              <app-number-input [(num)]="halfTimeB"  [disabled]="disabled"></app-number-input>
+            </div>
           </div>
         </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="match.scorer">
+        <div class="flex justify-content-center">
+          <span class="label">Un buteur</span>
+        </div>
+
+        <div class="grid justify-content-center mb-2">
+          <div class="col-6">
+            <div class="teamA flex flex-column align-items-center input">
+              <select name="team" id="teamSelection" (change)="nationalitySelected($event)" [disabled]="disabled">
+                <ng-container>
+                  <option value="-" selected>Nationalité</option>
+                  <option [value]="match.team_a">{{ match.team_a }}</option>
+                  <option [value]="match.team_b">{{ match.team_b }}</option>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="teamB flex flex-column align-items-center input">
+              <select name="player" id="playerSelection" [disabled]="disabled">
+                <ng-container>
+                  <option value="-" selected>-</option>
+                  <ng-container *ngIf="$players | async as players">
+                    <ng-container *ngFor="let item of players">
+                      <option [value]="item.name">{{ item.name }} - ({{ item.position }})</option>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </select>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="validate flex justify-content-center mb-3">
+        <button class="btn" alt="Valider pronostique" [disabled]="matchOutcome ==='' || disabled">Valider mon pronostique</button>
       </div>
 
     </div>
