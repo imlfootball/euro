@@ -1,26 +1,73 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { StateService, AppState } from './shared/services/core/state.service';
+import { StateService, AppState, user } from './shared/services/core/state.service';
+import { AuthService } from './shared/services/core/auth.service';
 import { TeamsService } from './shared/services/content/teams.service';
-import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  @Input() showLoader: boolean = true;
   public title: string = 'Infomil Euro 2024 Challenge';
   public page: number = 0;
   public showDialog: boolean = false;
-  @Input() showLoader: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private stateService: StateService, private euroService: TeamsService){
+  private cookieToken!: string;
+  private cookieUser!: string;
+  private currentUser!: user;
+
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private stateService: StateService, 
+    private euroService: TeamsService,
+    private authService: AuthService,
+    private cookieService: CookieService
+  ){
     router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         this.internalRoute(event.url.split('/#')[1])
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.cookieToken = this.cookieService.get('currentToken');
+    this.cookieUser = this.cookieService.get('currentUser');
+
+    if(this.cookieToken !== '' && this.cookieUser !== ''){
+      this.handleAlreadylogged();
+    } else {
+      this.showLoader = false;
+    }
+  }
+
+  handleAlreadylogged(): void {
+    this.authService.tryRefreshToken(this.cookieToken)
+    .pipe(
+      catchError(err => this.handleError(err))
+    )
+    .subscribe(() =>{
+      this.authService.getUserInfos(this.cookieUser, this.cookieToken).subscribe((res: any)=> {
+        this.stateService.updateUser(res.data);
+        this.showLoader = false;
+      })
+    });
+  }
+
+  handleError(Err:any): Observable<Response> {
+    if(Err.error.error.message){
+      console.clear();
+      this.cookieService.delete('currentToken');
+      this.cookieService.delete('currentUser');
+    }
+    return throwError(Err);
   }
 
   internalRoute(route: string):void {

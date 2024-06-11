@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 export interface AppState {
   loggedIn: boolean;
@@ -19,6 +21,8 @@ export interface user {
 })
 
 export class StateService {
+
+  private authService = inject(AuthService);
 
   private _loaderState = new BehaviorSubject<boolean>(false);
 
@@ -65,6 +69,20 @@ export class StateService {
 
   toggleLoader() {
     this._loaderState.next(!this._loaderState.getValue());
+  }
+
+  logoutUser() {
+    this._user.next({
+      id : null,
+      first_name: null,
+      last_name: null,
+      email: null,
+      status: null,
+    })
+
+    this.authService.deleteCookies();
+
+    location.href="#accueil";
   }
 
 }

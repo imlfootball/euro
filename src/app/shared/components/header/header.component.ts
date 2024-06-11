@@ -19,7 +19,16 @@ export class HeaderComponent implements OnInit{
     this.$userState = this.state.userState;
   }
 
-  public showLoginModal(): void {
+  protected showLoginModal(): void {
     this.showLogin = true;
+  }
+
+  protected loadHomepage() {
+    this.state.updateState({ currentPage: 'accueil' });
+    location.href = `#accueil`;
+  }
+
+  protected logout() {
+    this.state.logoutUser();
   }
 }

@@ -18,9 +18,30 @@
   }
 }
 
-.headerLogo img {
+.headerLogo button {
   height: 100%;
   width: auto;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+
+  span {
+    font-size: 0.75rem;
+  }
+
+  &:hover,
+  &:hover span {
+    color: $yellow;
+  }
 }
 
 @media screen and (min-width: 990px) {
