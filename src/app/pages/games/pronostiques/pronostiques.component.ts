@@ -14,32 +14,38 @@ export class PronostiquesComponent {
   
   private matchesService = inject(MatchesService);
   private stateService = inject(StateService);
-  protected isLoggedIn:boolean = false;
+  protected isLoggedIn: boolean = false;
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
-
 
   ngOnInit(): void {
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
-    )
+    );
 
     this.stateService.userState.subscribe({
       next: (res) => {
-        (res.id) ? this.isLoggedIn = true: this.isLoggedIn = false; 
+        this.isLoggedIn = !!res.id; 
       }
-    })
+    });
   }
 
   groupMatchesByDate(matches: Matches[]): { [key: string]: Matches[] } {
-    // console.log(matches);
-    
+    const now = new Date();
+    const daysFromNow = new Date();
+
+    // define here interval on which the matches should appear
+    daysFromNow.setDate(now.getDate() + 40);
+
     return matches.reduce((groups, match) => {
-      const date = match.date.split(' ')[0];
-      if (!groups[date]) {
-        groups[date] = [];
+      const matchDate = new Date(match.date);
+      if (matchDate <= daysFromNow) {
+        const dateKey = match.date.split(' ')[0];
+        if (!groups[dateKey]) {
+          groups[dateKey] = [];
+        }
+        groups[dateKey].push(match);
       }
-      groups[date].push(match);
       return groups;
     }, {} as { [key: string]: Matches[] });
   }
@@ -47,4 +53,5 @@ export class PronostiquesComponent {
   getDates(groupedMatches: { [key: string]: Matches[] }): string[] {
     return Object.keys(groupedMatches).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
   }
+
 }

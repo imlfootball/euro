@@ -3,7 +3,7 @@ export interface matchesApiData {
 }
 
 export interface Matches {
-    id: number;
+    id: string;
     status: string;
     sort: number | null;
     owner: number;
