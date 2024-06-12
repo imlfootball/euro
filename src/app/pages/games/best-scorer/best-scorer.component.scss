@@ -7,6 +7,16 @@
   width: calc(100% + 2rem) !important;
 }
 
+.pronostique {
+  background: white;
+  border-radius: 10px;
+  min-height: 200px;
+
+  .prediction {
+    padding: 1rem;
+  }
+}
+
 @media screen and (min-width: 576px){
   .filter {
     margin-top: -1rem;

@@ -14,3 +14,23 @@
     }
   }
 }
+
+::ng-deep {
+  .stadiumDetails {
+
+    p {
+      line-height: 1.5;
+    }
+
+    ol {
+      margin-left: 0;
+      padding-lefT: 0;
+
+      li {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+  }
+}
