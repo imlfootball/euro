@@ -9,6 +9,10 @@
 }
 
 @media screen and (max-width: 990px){
+  .subMenu {
+    display: none !important;
+  }
+
   .menuBtn {
     display: flex;
   }
@@ -29,7 +33,7 @@
       display: flex !important;
     }
 
-    button {
+    button  {
       color: white;
       font-size: 2rem;
       padding: 0.85rem 1rem;
@@ -41,12 +45,20 @@
         display: none;
       }
     }
+
+    button.mobileSub {
+      font-size: 2rem !important;
+    }
   }
 }
 
 @media screen and (min-width: 990px) {
   nav {
     height: 100%;
+  }
+
+  .mobileSub {
+    display: none !important;
   }
 
   .menuBtn {

@@ -20,7 +20,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { MatchlistComponent } from './shared/components/matchlist/matchlist.component';
-import { MatchdetailsComponent } from './shared/components/matchdetails/matchdetails.component';
 import { MatchComponent } from './shared/components/match/match.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { DialogComponent } from './shared/components/dialog/dialog.component';
@@ -57,7 +56,6 @@ import { StadiumdetailsComponent } from './components/stadiumdetails/stadiumdeta
     ModalComponent,
     LoginComponent,
     MatchlistComponent,
-    MatchdetailsComponent,
     MatchComponent,
     LayoutComponent,
     DialogComponent,

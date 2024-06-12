@@ -18,26 +18,38 @@ export class MatchComponent implements OnInit{
   predictionService = inject(PredictionsService);
   stateService = inject(StateService);
 
-  protected showLoader: boolean = false;
-  protected pronostiqueDone: boolean = false;
-
   @Input() match!: Matches;
   @Input() isPronostiques: boolean = false;
   @Input() disabled: boolean = false;
 
-  userId: number = 0;
-  userTrigramme: string = '';
-  halfTimeA: number = 0;
-  halfTimeB: number = 0;
-  fullTimeA: number = 0;
-  fullTimeB: number = 0;
-  scorer: string = '';
-  matchOutcome: string = '';
+  protected showLoader: boolean = false;
+  protected pronostiqueDone: boolean = false;
 
-  $players!: Observable<Players[]>;
+  protected userId: number = 0;
+  protected userTrigramme: string = '';
+  protected halfTimeA: number = 0;
+  protected halfTimeB: number = 0;
+  protected fullTimeA: number = 0;
+  protected fullTimeB: number = 0;
+  protected scorer: string = '';
+  protected matchOutcome: string = '';
+
+  protected $players!: Observable<Players[]>;
+  protected donePronostique!: any;
 
   ngOnInit(): void {
-    // To do : disable pronostiques if already done..
+
+    this.stateService.userState.subscribe({
+      next:(response)=> {
+        (response.id)? this.userId = parseInt(response.id) : "";
+        (response.last_name)? this.userTrigramme = response.last_name : "";
+      }
+    })
+
+    if(this.isPronostiques && this.userId !== 0){
+      this.verfierMonPronostique();
+    }
+    
   }
 
   nationalitySelected(ev: Event):void {
@@ -47,42 +59,39 @@ export class MatchComponent implements OnInit{
 
   sendBet(){
     this.showLoader = true;
+    let prediction = {
+      user: this.userTrigramme,
+      game_id: this.match.id,
+      halftime_a: this.halfTimeA?.toString(),
+      halftime_b: this.halfTimeB?.toString(),
+      fulltime_a: this.fullTimeA?.toString(),
+      fulltime_b: this.fullTimeB?.toString(),
+      scorer: this.scorer,
+      winner_draw: this.matchOutcome,
+    }
 
-    this.stateService.userState.subscribe({
-      next:(response)=> {
-
-        if(response.last_name) {
-
-          let prediction = {
-            user: response.last_name,
-            game_id: this.match.id,
-            halftime_a: this.halfTimeA?.toString(),
-            halftime_b: this.halfTimeB?.toString(),
-            fulltime_a: this.fullTimeA?.toString(),
-            fulltime_b: this.fullTimeB?.toString(),
-            scorer: this.scorer,
-            winner_draw: this.matchOutcome,
-          }
-
-          debugger;
-
-          this.predictionService.sendPrediction(prediction).subscribe({
-            next:(response)=>{
-              console.log(response);
-              this.showLoader = false;
-            },
-            error:(error)=>{
-              console.log(error);
-              this.showLoader = false;
-            }
-          })
-
-        }
+    this.predictionService.sendPrediction(prediction).subscribe({
+      next:()=>{
+        location.reload();
+      },
+      error:(error)=>{
+        console.log(error);
+        this.showLoader = false;
       }
     })
   }
 
-  pronostiquesComplete(){
-
+  verfierMonPronostique(): void {
+    this.predictionService.getMyPredictions(this.match.id).subscribe({
+      next: (response)=> {
+        if(response.length > 0){
+          this.pronostiqueDone = true;
+          this.donePronostique = response[0];
+        } else {
+          this.pronostiqueDone = false;
+          this.donePronostique = [];
+        }
+      }
+    })
   }
 }

@@ -32,4 +32,12 @@ export class HpnewsComponent {
   previousPage() {
     this.currentPage--;
   }
+
+  handleNewsOpen(item: any) {
+    if(item.route){
+      location.href = item.route;
+    } else {
+      console.log('handle news content');
+    }
+  }
 }

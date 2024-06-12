@@ -12,6 +12,7 @@
   <div *ngIf="$groupedMatches | async as groupedMatches; else loader;">
 
     <ng-container *ngFor="let date of getDates(groupedMatches)">
+      
       <h2 class="capitalize">{{ date | date: 'fullDate' }}</h2>
 
       <div class="flex gap-2 mb-8 flex-wrap">

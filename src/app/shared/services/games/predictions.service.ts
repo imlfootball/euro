@@ -29,7 +29,22 @@ export class PredictionsService {
     }
   }
 
-  getMyPredictions(userTrigramme: string){
-    return this.httpClient.get(`https://euro.omediainteractive.net/imleuro/items/pronostiques?filter[user]=${userTrigramme}`);
+  getMyPredictions(gameID: string): Observable<any>{
+
+    let token = this.cookieService.get('currentToken');
+    
+    if (token) {
+      let httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      };
+      return this.httpClient.get<any>(`https://euro.omediainteractive.net/imleuro/items/pronostiques?filter[game_id]=${gameID}`, httpOptions).pipe(
+        map(response => response.data)
+      );
+    } else {
+      return throwError('No token found');
+    }
   }
 }

@@ -8,7 +8,7 @@
 </div>
 
 <div class="container pt-4">
-  <h3 style="line-height: 1.5; text-align: center">Prédisez le meilleur buteur du tournoi(Golden Boot) et le nombre de but qu’il inscrira ainsi que le joueur du tournoi (Player of tournament)</h3>
+  <h3 style="line-height: 1.5; text-align: center" class="mb-6">Prédisez le meilleur buteur du tournoi (Golden Boot) et le nombre de buts qu’il marquera, ainsi que le joueur du tournoi (Player of the Tournament).</h3>
 
 
   <div class="grid justify-content-center">
@@ -17,7 +17,7 @@
         <div class="imagePlaceholder">
           <img src="assets/meilleur-buteur.png" alt="" width="100%" height="auto" />
         </div>
-        <div class="prediction flex flex-column align-items-center justify-content-center">
+        <div class="prediction flex flex-column align-items-center justify-content-center" *ngIf="!alreadyPlayed && !jeuFermer">
           Veuillez selectionner le joueur:
 
           <div class="grid justify-content-center mb-2 w-full">
@@ -59,6 +59,18 @@
             </div>
           </div>
         </div>
+
+        <div class="alreadyPlayed p-3" *ngIf="alreadyPlayed">
+          <h3>Votre pronostique</h3>
+          <ng-container *ngIf="userPronostique">
+            <p><strong>Meilleur Buteur:</strong> {{ userPronostique.meilleur_buteur }}</p>
+            <p><strong>Nombre de but:</strong> {{ userPronostique.nombre_but }}</p>
+          </ng-container>
+        </div>
+
+        <div class="jeuFermer p-3" *ngIf="jeuFermer && !alreadyPlayed">
+          <h3>Le jeu est fermer</h3>
+        </div>
       </div>
     </div>
 
@@ -67,7 +79,7 @@
         <div class="imagePlaceholder">
           <img src="assets/meilleur-joueur.png" alt="" width="100%" height="auto" />
         </div>
-        <div class="prediction flex flex-column align-items-center justify-content-center">
+        <div class="prediction flex flex-column align-items-center justify-content-center" *ngIf="!alreadyPlayed && !jeuFermer">
           Veuillez selectionner le joueur:
 
           <div class="grid justify-content-center mb-2 w-full">
@@ -102,12 +114,22 @@
           </div>
 
         </div>
+        <div class="alreadyPlayed p-3" *ngIf="alreadyPlayed">
+          <h3>Votre pronostique</h3>
+          <ng-container *ngIf="userPronostique">
+            <p><strong>Meilleur Joueur:</strong> {{ userPronostique.meilleur_joueur }}</p>
+          </ng-container>
+        </div>
+
+        <div class="jeuFermer p-3" *ngIf="jeuFermer && !alreadyPlayed">
+          <h3>Le jeu est fermer</h3>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="flex justify-content-center mt-3">
-    <button class="btn ml-auto mr-auto" title="Valider Mes choix" [disabled]="disabled">Valider mes choix de joueurs</button>
+  <div class="flex justify-content-center mt-3" *ngIf="!alreadyPlayed && !jeuFermer">
+    <button class="btn ml-auto mr-auto" title="Valider Mes choix" [disabled]="disabled" (click)="validerChoix()">Valider mes choix de joueurs</button>
   </div>
 </div>
 

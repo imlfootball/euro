@@ -1,4 +1,4 @@
-<div class="match">
+<div class="match" [ngClass]="{'donePronostique': pronostiqueDone, 'pronostiqueMode': isPronostiques}">
   <div class="flex justify-content-between align-items-center mb-3">
     <div class="flex justify-content-center">
       <span class="phase mt-0" *ngIf="match.group; else phase">Groupe {{ match.group }} - M{{ match.id }}</span>
@@ -154,6 +154,14 @@
           <button class="btn" alt="Valider pronostique" [disabled]="matchOutcome ==='' || disabled" (click)="sendBet()">Valider mon pronostique</button>
         </div>
 
+      </div>
+
+      <div class="pronostiqueDone flex flex-column align-items-center mt-4" *ngIf="pronostiqueDone">
+        <p>Mon pronostique:</p>
+        <h4 class="mt-0 mb-4 text-3xl"><strong>{{ donePronostique.winner_draw }}</strong></h4>
+        <ng-container *ngIf="match.fulltime">
+          <h4 class="mt-0 mb-4 text-3xl"><strong>Score final :</strong> {{ donePronostique.fulltime_a }} - {{ donePronostique.fulltime_b }}</h4>
+        </ng-container>
       </div>
 
     </div>

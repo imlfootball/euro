@@ -111,6 +111,11 @@ export class NavComponent implements OnInit, OnDestroy {
     this.stateService.updateState({ currentPage: currentRoute });
     location.href = `#${currentRoute}`;
     this.showMenu = false;
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngOnDestroy() {

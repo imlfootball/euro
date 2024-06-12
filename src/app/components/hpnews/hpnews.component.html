@@ -5,7 +5,7 @@
       <img src="https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt183bf86a0289a200/6500d4727ec5a5d113023bba/Euro_2024_Power_Rank.jpg?auto=webp&format=pjpg&width=700&quality=60" alt="" class="w-full h-full" />
     </div>
     <div class="title pl-3 pr-3">
-      <h3 class="text-white text-sm mt-3 md:text-2xl md:mt-3">Poll : Qui sont les favoris de cette EURO 2024 ?</h3>
+      <h3 class="text-white text-sm mt-3 md:text-2xl md:mt-3">Bienvenue sur la nouvelle plateforme IML Football Challenge !</h3>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
           <div class="newsRow news-{{i}}" *ngIf="currentPage === i">
             <div class="newsInfoContainer">
               <ng-container *ngFor="let item of chunk">
-                <div class="newsInfo flex align-items-center gap-3 mb-2">
+                <div class="newsInfo flex align-items-center gap-3 mb-2" (click)="handleNewsOpen(item)">
                   <div class="newsInfoPic overflow-hidden">
                     <img src="{{ item.imgThumnails[2].url }}" alt="les stades" class="w-full h-full" />
                   </div>
@@ -38,7 +38,7 @@
               arrow_circle_left
               </span>
           </button>
-          <button [disabled]="currentPage > news.length / 3 - 1" (click)="nextPage()">
+          <button [disabled]="currentPage > news.length / 3 - 2" (click)="nextPage()">
             <span class="material-symbols-outlined mr-0">
               arrow_circle_right
               </span>

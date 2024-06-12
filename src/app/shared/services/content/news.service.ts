@@ -10,7 +10,7 @@ export class NewsService {
   private http = inject(HttpClient);
 
   getHPnews(): Observable<any[]> {
-    return this.http.get<any>('https://euro.omediainteractive.net/imleuro/items/news?fields=title,image')
+    return this.http.get<any>('https://euro.omediainteractive.net/imleuro/items/news?fields=title,image,route,content,id')
       .pipe(
         mergeMap(newsData => {
           const newsItems = newsData && newsData.data ? newsData.data : [];
