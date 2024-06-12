@@ -9,13 +9,13 @@ header {
 .main {
   width: 100%;
   background: #f2f3f4;
-  min-height: calc(100vh - 14rem);
+  min-height: calc(100vh - 28rem);
   padding-bottom: 2rem;
 }
 
 ::ng-deep {
   .heroContainer + .main {
-    min-height: calc(40vh - 14rem);
+    min-height: calc(40vh - 28rem);
   }
 }
 

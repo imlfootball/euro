@@ -4,8 +4,8 @@
 
   <app-breadcrump [bcdata]="breadCrumpData" (routeEvent)="resetStadiumSelection($event)" />
 
-  <div class="stadiums flex flex-wrap relative gap-2 md:mt-4" *ngIf="$stadiumData | async as stadiums; else loader" [ngClass]="{'hidden': choosenStadium}">
-  <div class="stadium bg-white p-3 flex col-4 align-items-center justify-content-center md:col-3 lg:col-3" *ngFor="let stadium of stadiums">
+  <div class="stadiums grid relative gap-2 md:mt-4" *ngIf="$stadiumData | async as stadiums; else loader" [ngClass]="{'hidden': choosenStadium}">
+  <div class="stadium bg-white p-3 flex col-12 align-items-center justify-content-center md:col-3 lg:col-3" *ngFor="let stadium of stadiums">
     <button class="btnStadiums flex flex-column align-items-center" (click)="showStadium(stadium)">
       <!-- {{ stadium.id }} -->
       <div class="imgPlaceholder">
