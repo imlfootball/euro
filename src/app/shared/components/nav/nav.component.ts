@@ -55,7 +55,7 @@ export class NavComponent implements OnInit, OnDestroy {
         "active": false,
         "sub": [
           {
-            "label": "Golden Players",
+            "label": "Meilleurs Joueurs",
             "route": "meilleur-buteur",
             "active": false
           },
