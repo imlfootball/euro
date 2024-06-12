@@ -45,6 +45,7 @@ import { CacheInterceptor } from './shared/services/core/cacheinterceptor.interc
 import { TabcontentComponent, TabContentDirective } from './shared/components/tabcontent/tabcontent.component';
 import { NumberInputComponent } from './shared/components/number-input/number-input.component';
 import { WindrawComponent } from './shared/components/windraw/windraw.component';
+import { StadiumdetailsComponent } from './components/stadiumdetails/stadiumdetails.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { WindrawComponent } from './shared/components/windraw/windraw.component'
     TabcontentComponent,
     TabContentDirective,
     NumberInputComponent,
-    WindrawComponent
+    WindrawComponent,
+    StadiumdetailsComponent
   ],
   imports: [
     BrowserModule,

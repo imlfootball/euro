@@ -1,0 +1,16 @@
+.stadiumDetails {
+  .stadiumCover {
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1280/480;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-top: -15%;
+    }
+  }
+}
