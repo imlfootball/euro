@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1718201791652,
+  "timestamp": 1718222387999,
   "index": "/euro/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/euro/favicon.ico",
         "/euro/index.html",
-        "/euro/main-WTCOJI5E.js",
+        "/euro/main-IEDPROFP.js",
         "/euro/manifest.webmanifest",
         "/euro/polyfills-S3BTP7ME.js",
         "/euro/styles-KHZ6G4LL.css"
@@ -97,6 +97,9 @@
         "/euro/assets/icons/icon-512x512.png",
         "/euro/assets/icons/icon-72x72.png",
         "/euro/assets/icons/icon-96x96.png",
+        "/euro/assets/jeu-bracket.png",
+        "/euro/assets/jeu-meilleur-joueur.png",
+        "/euro/assets/jeu-pronostique.png",
         "/euro/assets/line-pattern.png",
         "/euro/assets/logo-euro-2024.png",
         "/euro/assets/meilleur-buteur.png",
@@ -236,6 +239,9 @@
     "/euro/assets/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/euro/assets/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/euro/assets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/euro/assets/jeu-bracket.png": "e496c30f027ed9685995fe7dd73fbad56617dd2d",
+    "/euro/assets/jeu-meilleur-joueur.png": "ae0682dd6c25d24f89dddf5fc010c627b612abe4",
+    "/euro/assets/jeu-pronostique.png": "c6fb7dbd3a544c0124ebbc9992078538c6612d1e",
     "/euro/assets/line-pattern.png": "2c01b20e5e9cb80882070fed3e52936cdb8da11e",
     "/euro/assets/logo-euro-2024.png": "58ce2512063f163b31dd9ada4dc58c70a20fe767",
     "/euro/assets/meilleur-buteur.png": "50086e8d633b7be2fd0c034e73bbc6fc4769a822",
@@ -293,8 +299,8 @@
     "/euro/assets/vertical-banner-login-campaign.avif": "9d21fe7e07bc70f2f9d2bb31420dfd996463fa36",
     "/euro/assets/vertical-banner-login-campaign.png": "5d59c9020cc8878ef07eba486d51c6885d341500",
     "/euro/favicon.ico": "3281b8038d436dfbddede41cf85b6a32081db1fe",
-    "/euro/index.html": "98b7ee35141ceec15514414c33039731b43e537d",
-    "/euro/main-WTCOJI5E.js": "4db1dffe830fc66becce0bc78490b36f8d86551a",
+    "/euro/index.html": "27944a883aa82d87c8d72dc5c3a22b82557d3565",
+    "/euro/main-IEDPROFP.js": "279f21a5c2fd016f44c35acd6b0356983d1ae01f",
     "/euro/manifest.webmanifest": "06c2bd91496a98c9fd1b84e275e43e84e707e1a3",
     "/euro/media/corner-bg-YOV6DW44.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
     "/euro/media/down-arrow-V4UHFK2W.png": "b8586e43900253f8c394ee1537614aecc9f369bb",
