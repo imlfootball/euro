@@ -7,7 +7,7 @@
     </button>
 
     <div class="input inputNumber mr-2 ml-2">
-      <input type="number" maxlength="2" [(ngModel)]="num" [disabled]="disabled" class="px-1"/>
+      <input type="number" maxlength="2" [(ngModel)]="num" [disabled]="disabled" class="px-1" (change)="onchange(num)"/>
     </div>
 
     <button class="btnAdd btnNumber" (click)="increment()" [disabled]="num > 98 || disabled">

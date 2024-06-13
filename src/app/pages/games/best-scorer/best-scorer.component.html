@@ -128,8 +128,8 @@
     </div>
   </div>
 
-  <div class="flex justify-content-center mt-3" *ngIf="!alreadyPlayed && !jeuFermer">
-    <button class="btn ml-auto mr-auto" title="Valider Mes choix" [disabled]="disabled" (click)="validerChoix()">Valider mes choix de joueurs</button>
+  <div class="flex justify-content-center mt-3 validateWrapper" *ngIf="!alreadyPlayed && !jeuFermer">
+    <button class="btn ml-auto mr-auto" title="Valider Mes choix" [disabled]="disabled || (goals === 0 || !tournamentPlayer || !goldenScorer)" (click)="validerChoix()">Valider mes choix de joueurs</button>
   </div>
 </div>
 

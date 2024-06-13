@@ -36,6 +36,7 @@ export class MatchComponent implements OnInit{
   protected today: Date = new Date();
   protected limitDate!: Date;
   protected closed: boolean = false;
+  protected calcWinDrawOutcome: boolean = false;
 
   protected $players!: Observable<Players[]>;
   protected donePronostique!: any;
@@ -58,15 +59,13 @@ export class MatchComponent implements OnInit{
 
     let matchDate = new Date(this.match.date)
     this.limitDate = this.subtractHours(matchDate);
-    // console.log(`------------------${this.match.id}----------------------`)
-    // console.log('match date', matchDate);
-    // console.log('limit date', this.limitDate);
-    // console.log('today', this.today);
-    // console.log('Is today less than two hours away', (this.today > this.limitDate));
-    // console.log('--------------------------------------------------------');
 
     if(this.today > this.limitDate) {
       this.closed = true;
+    }
+
+    if(parseInt(this.match.id) === 1 || this.match.phase !== "Group Stage") {
+      this.calcWinDrawOutcome = true;
     }
 
   }
@@ -86,7 +85,13 @@ export class MatchComponent implements OnInit{
   sendBet(){
     let currentDate = new Date();
     if(currentDate < this.limitDate ) {
+      let currentOutcome = this.matchOutcome;
       this.showLoader = true;
+
+      if(this.calcWinDrawOutcome){
+        currentOutcome = this.calculateWinDraw( this.match.team_a, this.match.team_b, this.fullTimeA, this.fullTimeB);
+      }
+
       let prediction = {
         user: this.userTrigramme,
         game_id: this.match.id,
@@ -95,7 +100,7 @@ export class MatchComponent implements OnInit{
         fulltime_a: this.fullTimeA?.toString(),
         fulltime_b: this.fullTimeB?.toString(),
         scorer: this.scorer,
-        winner_draw: this.matchOutcome,
+        winner_draw: currentOutcome,
       }
 
       this.predictionService.sendPrediction(prediction).subscribe({
@@ -111,6 +116,15 @@ export class MatchComponent implements OnInit{
     } else {
       location.reload();
     }
+  }
+
+  calculateWinDraw(teamA: string, teamB: string, scoreA: number, scoreB: number): string {
+    let outcome: string;
+
+    (scoreA > scoreB)? outcome = teamA : outcome = teamB;
+    (scoreA === scoreB )? outcome = 'Draw': '';
+
+    return outcome;
   }
 
   verfierMonPronostique(): void {

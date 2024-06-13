@@ -24,4 +24,8 @@ export class NumberInputComponent {
       this.numChange.emit(this.num);
     }
   }
+
+  onchange(num: number){
+    this.numChange.emit(num);
+  }
 }

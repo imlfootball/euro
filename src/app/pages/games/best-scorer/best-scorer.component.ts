@@ -58,6 +58,7 @@ export class BestScorerComponent implements OnInit {
       this.jeuFermer = true;
     }
 
+    console.log('xx', this.tournamentPlayer, this.goldenScorer, this.goals );
   }
 
   checkPlayed(){

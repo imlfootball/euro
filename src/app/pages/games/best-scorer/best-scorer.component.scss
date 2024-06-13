@@ -31,3 +31,15 @@
     width: 32.8% !important;
   }
 }
+
+@media screen and (max-width: 990px){
+  .validateWrapper {
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 10px;
+    position: fixed;
+    bottom: 0;
+    z-index: 50;
+  }
+}

@@ -65,8 +65,8 @@
           <span class="label">Qui remporte la rencontre ?</span>
         </div>
 
-        <div class="grid justify-content-center mt-2 mb-2">
-          <div class="col-12">
+        <div class="grid justify-content-center mt-2 mb-2" [ngClass]="{'hidden': calcWinDrawOutcome }">
+          <div class="col-12" >
             <app-windraw [teamA]="match.team_a" [teamB]="match.team_b" [(outCome)]="matchOutcome" [disabled]="disabled" />
           </div>
         </div>
@@ -151,7 +151,7 @@
         </ng-container>
 
         <div class="validate flex justify-content-center mb-3">
-          <button class="btn" alt="Valider pronostique" [disabled]="matchOutcome ==='' || disabled" (click)="sendBet()">Valider mon pronostique</button>
+          <button class="btn" alt="Valider pronostique" [disabled]="(matchOutcome ==='' && !calcWinDrawOutcome) || disabled" (click)="sendBet()">Valider mon pronostique</button>
         </div>
 
       </div>
