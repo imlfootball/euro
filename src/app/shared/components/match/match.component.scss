@@ -15,6 +15,11 @@
     color: white !important;
   }
 
+  &.closed {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
   .teamName {
     font-size: 1.25rem;
     font-weight: bold;

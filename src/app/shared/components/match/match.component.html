@@ -1,4 +1,4 @@
-<div class="match" [ngClass]="{'donePronostique': pronostiqueDone, 'pronostiqueMode': isPronostiques}">
+<div class="match" [ngClass]="{'donePronostique': pronostiqueDone, 'pronostiqueMode': isPronostiques, 'closed': !pronostiqueDone && closed}">
   <div class="flex justify-content-between align-items-center mb-3">
     <div class="flex justify-content-center">
       <span class="phase mt-0" *ngIf="match.group; else phase">Groupe {{ match.group }} - M{{ match.id }}</span>
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="pronostiqueWrapper" *ngIf="!pronostiqueDone">
+      <div class="pronostiqueWrapper" *ngIf="!pronostiqueDone || (!closed && !pronostiqueDone)">
 
         <div class="flex justify-content-center mt-2">
           <span class="label">Qui remporte la rencontre ?</span>

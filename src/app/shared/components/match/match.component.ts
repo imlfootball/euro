@@ -33,6 +33,9 @@ export class MatchComponent implements OnInit{
   protected fullTimeB: number = 0;
   protected scorer: string = '';
   protected matchOutcome: string = '';
+  protected today: Date = new Date();
+  protected limitDate!: Date;
+  protected closed: boolean = false;
 
   protected $players!: Observable<Players[]>;
   protected donePronostique!: any;
@@ -43,13 +46,36 @@ export class MatchComponent implements OnInit{
       next:(response)=> {
         (response.id)? this.userId = parseInt(response.id) : "";
         (response.last_name)? this.userTrigramme = response.last_name : "";
+        if(this.isPronostiques){
+          this.verfierMonPronostique();
+        }
       }
     })
 
     if(this.isPronostiques && this.userId !== 0){
       this.verfierMonPronostique();
     }
-    
+
+    let matchDate = new Date(this.match.date)
+    this.limitDate = this.subtractHours(matchDate);
+    // console.log(`------------------${this.match.id}----------------------`)
+    // console.log('match date', matchDate);
+    // console.log('limit date', this.limitDate);
+    // console.log('today', this.today);
+    // console.log('Is today less than two hours away', (this.today > this.limitDate));
+    // console.log('--------------------------------------------------------');
+
+    if(this.today > this.limitDate) {
+      this.closed = true;
+    }
+
+  }
+
+  subtractHours(date: Date): Date {
+    const newDate = new Date(date);
+    // 15mins
+    newDate.setTime(newDate.getTime() - (1 * 15 * 60 * 1000));
+    return newDate;
   }
 
   nationalitySelected(ev: Event):void {
@@ -58,27 +84,33 @@ export class MatchComponent implements OnInit{
   }
 
   sendBet(){
-    this.showLoader = true;
-    let prediction = {
-      user: this.userTrigramme,
-      game_id: this.match.id,
-      halftime_a: this.halfTimeA?.toString(),
-      halftime_b: this.halfTimeB?.toString(),
-      fulltime_a: this.fullTimeA?.toString(),
-      fulltime_b: this.fullTimeB?.toString(),
-      scorer: this.scorer,
-      winner_draw: this.matchOutcome,
-    }
-
-    this.predictionService.sendPrediction(prediction).subscribe({
-      next:()=>{
-        location.reload();
-      },
-      error:(error)=>{
-        console.log(error);
-        this.showLoader = false;
+    let currentDate = new Date();
+    if(currentDate < this.limitDate ) {
+      this.showLoader = true;
+      let prediction = {
+        user: this.userTrigramme,
+        game_id: this.match.id,
+        halftime_a: this.halfTimeA?.toString(),
+        halftime_b: this.halfTimeB?.toString(),
+        fulltime_a: this.fullTimeA?.toString(),
+        fulltime_b: this.fullTimeB?.toString(),
+        scorer: this.scorer,
+        winner_draw: this.matchOutcome,
       }
-    })
+
+      this.predictionService.sendPrediction(prediction).subscribe({
+        next:()=>{
+          location.reload();
+        },
+        error:(error)=>{
+          console.log(error);
+          location.reload();
+          this.showLoader = false;
+        }
+      })
+    } else {
+      location.reload();
+    }
   }
 
   verfierMonPronostique(): void {
