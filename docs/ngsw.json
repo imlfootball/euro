@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1718222744945,
+  "timestamp": 1718262406980,
   "index": "/euro/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "/euro/favicon.ico",
         "/euro/index.html",
-        "/euro/main-IEDPROFP.js",
+        "/euro/main-DJW7NY5K.js",
         "/euro/manifest.webmanifest",
         "/euro/polyfills-S3BTP7ME.js",
-        "/euro/styles-KHZ6G4LL.css"
+        "/euro/styles-HSBGO7IP.css"
       ],
       "patterns": []
     },
@@ -231,14 +231,14 @@
     "/euro/assets/fonts/uefa-euro-heavyextended.7e56f30.woff2": "9627812bce866f1304ad124df9a11449b565a9ba",
     "/euro/assets/footer.png": "13e0a6b30f26ad4c69a168bc3ec44637f0e17859",
     "/euro/assets/hero-bg.jpg": "c9722768ff12cc78b343df0bef574548948e721b",
-    "/euro/assets/icons/icon-128x128.png": "c0bb53f28204d5dfa982275583429cfcc5f9928e",
-    "/euro/assets/icons/icon-144x144.png": "5700c06757e71d707ac8444ff480f11ea91cb82f",
-    "/euro/assets/icons/icon-152x152.png": "b58502012de62e72b5944039f90ab791c4cd095f",
-    "/euro/assets/icons/icon-192x192.png": "e121aa8d929acb4bfee414a00b16f6a20f7ee5a7",
-    "/euro/assets/icons/icon-384x384.png": "b90dbfb1e58c0aa7a2d070b55b37479f8dc6aa14",
-    "/euro/assets/icons/icon-512x512.png": "ce66a4319bd56b5e88cf92fe5fd9da31699c1223",
-    "/euro/assets/icons/icon-72x72.png": "bf90433e9091043638dc4528480738ea47ad02a7",
-    "/euro/assets/icons/icon-96x96.png": "f36a43b6972bc585236c60e481b6d3bd0e30e71c",
+    "/euro/assets/icons/icon-128x128.png": "ce74a847c5aa65a5c256e8fbefc2e2fc1ff03c00",
+    "/euro/assets/icons/icon-144x144.png": "f5a298abfab08037ec75e217d35d2af1750891b2",
+    "/euro/assets/icons/icon-152x152.png": "10b11a5e130d6f3cd322aad7decd877e1c4026b2",
+    "/euro/assets/icons/icon-192x192.png": "7099903547709094a808771899a1c0d384ac85ec",
+    "/euro/assets/icons/icon-384x384.png": "ec7df44ac560df00898e74a0c9d7922d0b9ada42",
+    "/euro/assets/icons/icon-512x512.png": "390e416b3ff78a32d7e00898d13f695709b68367",
+    "/euro/assets/icons/icon-72x72.png": "f8dc02f8db6ca3cf276d9061006e3e148715bccc",
+    "/euro/assets/icons/icon-96x96.png": "e78f374c95c6175d9702ae45e72e50666c6fac70",
     "/euro/assets/jeu-bracket.png": "e496c30f027ed9685995fe7dd73fbad56617dd2d",
     "/euro/assets/jeu-meilleur-joueur.png": "ae0682dd6c25d24f89dddf5fc010c627b612abe4",
     "/euro/assets/jeu-pronostique.png": "c6fb7dbd3a544c0124ebbc9992078538c6612d1e",
@@ -298,10 +298,10 @@
     "/euro/assets/up-arrow.png": "cef350faa73058074dd9b7616a8b22fe2f21895f",
     "/euro/assets/vertical-banner-login-campaign.avif": "9d21fe7e07bc70f2f9d2bb31420dfd996463fa36",
     "/euro/assets/vertical-banner-login-campaign.png": "5d59c9020cc8878ef07eba486d51c6885d341500",
-    "/euro/favicon.ico": "3281b8038d436dfbddede41cf85b6a32081db1fe",
-    "/euro/index.html": "27944a883aa82d87c8d72dc5c3a22b82557d3565",
-    "/euro/main-IEDPROFP.js": "279f21a5c2fd016f44c35acd6b0356983d1ae01f",
-    "/euro/manifest.webmanifest": "06c2bd91496a98c9fd1b84e275e43e84e707e1a3",
+    "/euro/favicon.ico": "1845ec8f60315e7a57e75cbb73289744c5d85365",
+    "/euro/index.html": "53eb3513a125521aa7d1184db5fa22c3bcaef31d",
+    "/euro/main-DJW7NY5K.js": "73740ab266a350f0a2a304abce23d712f50560b9",
+    "/euro/manifest.webmanifest": "55993a957017ad6ff982e11a92f17b97c06e2ced",
     "/euro/media/corner-bg-YOV6DW44.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
     "/euro/media/down-arrow-V4UHFK2W.png": "b8586e43900253f8c394ee1537614aecc9f369bb",
     "/euro/media/footer-6CRP6CMM.png": "13e0a6b30f26ad4c69a168bc3ec44637f0e17859",
@@ -311,7 +311,7 @@
     "/euro/media/uefa-euro-extraboldnarrow.e18195f-5DXNLZNB.woff2": "55748adb76349b2184fd9fa8c305a4898d38851f",
     "/euro/media/uefa-euro-heavyextended.7e56f30-UGNHUIOS.woff2": "9627812bce866f1304ad124df9a11449b565a9ba",
     "/euro/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/euro/styles-KHZ6G4LL.css": "a72169e98b4a3735fd46b91891b1ac6b8bee781f"
+    "/euro/styles-HSBGO7IP.css": "107a68b5840eb911ccfb94ad26800ae19c27771f"
   },
   "navigationUrls": [
     {
