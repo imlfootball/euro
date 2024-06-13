@@ -1,21 +1,20 @@
 <div class="windrawSelector flex" *ngIf="teamA && teamB">
-  <div class="col-4 p-0">
+  <div class="col-5 p-0 sm:col-4">
     <button class="teamA flex justify-content-center align-items-center" [ngClass]="{'active': outCome === teamA }" (click)="winDrawSelect(teamA)" [disabled]="disabled">
       <span class="material-symbols-outlined mr-1" *ngIf="outCome === teamA">check</span>
       {{ teamA }}
     </button>
   </div>
-  <div class="col-4 p-0">
+  <div class="col p-0 sm:col-4">
     <button class="draw flex justify-content-center align-items-center" [ngClass]="{'active': outCome === 'Draw' }" (click)="winDrawSelect('Draw')" [disabled]="disabled">
-      <span class="material-symbols-outlined mr-1" *ngIf="outCome === 'Draw'">check</span>
-      match nul
+     match nul
     </button>
   </div>
-  <div class="col-4 p-0">
+  <div class="col-5 p-0 sm:col-4">
     <button class="teamB flex justify-content-center align-items-center" [ngClass]="{'active': outCome === teamB }" (click)="winDrawSelect(teamB)" [disabled]="disabled">
       <span class="material-symbols-outlined mr-1" *ngIf="outCome === teamB">check</span>
       {{ teamB }}
     </button>
-    
+
   </div>
 </div>

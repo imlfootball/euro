@@ -11,7 +11,7 @@ import { StateService } from '../../../shared/services/core/state.service';
   styleUrl: './pronostiques.component.scss'
 })
 export class PronostiquesComponent {
-  
+
   private matchesService = inject(MatchesService);
   private stateService = inject(StateService);
   protected isLoggedIn: boolean = false;
@@ -25,7 +25,7 @@ export class PronostiquesComponent {
 
     this.stateService.userState.subscribe({
       next: (res) => {
-        this.isLoggedIn = !!res.id; 
+        this.isLoggedIn = !!res.id;
       }
     });
   }

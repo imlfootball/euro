@@ -14,7 +14,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class AppComponent implements OnInit {
 
   @Input() showLoader: boolean = true;
-  public title: string = 'Infomil Euro 2024 Challenge';
+  public title: string = 'IML Foot Challenge - Euro 2024';
   public page: number = 0;
   public showDialog: boolean = false;
 
@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
   private currentUser!: user;
 
   constructor(
-    private route: ActivatedRoute, 
-    private router: Router, 
-    private stateService: StateService, 
+    private route: ActivatedRoute,
+    private router: Router,
+    private stateService: StateService,
     private euroService: TeamsService,
     private authService: AuthService,
     private cookieService: CookieService

@@ -323,6 +323,10 @@ input[type=number]::-webkit-outer-spin-button {
   color: $primaryColor;
 }
 
+.filter h1 {
+  align-items: center;
+}
+
 @media screen and (min-width: 990px){
   .desktop {
     display: flex !important;
@@ -335,6 +339,18 @@ input[type=number]::-webkit-outer-spin-button {
   body {
     padding-top: calc($subHeader + $headerNav);
   }
+}
+
+@media screen and (max-width: 990px){
+
+  .filter h1 {
+    font-size: 1.5rem;
+  }
+
+  .breadcrump button h2.text-xl {
+    font-size: 0.95rem !important;
+  }
+
 }
 
 // .grid {
