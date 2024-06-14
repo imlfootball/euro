@@ -13,21 +13,35 @@
     </div>
   </div>
   <div class="flex align-items-center justify-content-center mb-3" *ngIf="!isPronostiques;">
-    <span class="flex align-items-center mr-2">
-      <span class="mr-2 flex">
-        <img src="assets/flags/{{ match.team_a | lowercase }}.png" alt="" class="flag" *ngIf="match.team_a" />
-        <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_a" />
+    <div class="col-5 p-0">
+      <span class="flex align-items-center justify-content-center">
+        <span class="mr-2 flex">
+          <img src="assets/flags/{{ match.team_a | lowercase }}.png" alt="" class="flag" *ngIf="match.team_a" />
+          <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_a" />
+        </span>
+        <span class="teamName">{{ match.team_a }}</span>
       </span>
-      <span class="teamName">{{ match.team_a }}</span>
-    </span>
-      vs
-      <span class="flex align-items-center ml-2">
+      <span class="flex align-items-center justify-content-center mt-4"  *ngIf="match.team_a !== null" >
+        <teamperformance [teamName]="match.team_a" />
+      </span>
+    </div>
+    <div class="col-2  p-0">
+      <div class="flex align-items-center justify-content-center pb-5">
+        vs
+      </div>
+    </div>
+    <div class="col-5 p-0">
+      <span class="flex align-items-center justify-content-center">
         <span class="teamName">{{ match.team_b }}</span>
         <span class="ml-2 flex">
           <img src="assets/flags/{{ match.team_b | lowercase }}.png" alt="" class="flag" *ngIf="match.team_b" />
-          <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_b" />
+          <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_b " />
         </span>
       </span>
+      <span class="flex align-items-center justify-content-center mt-4" *ngIf="match.team_b  !== null">
+        <teamperformance [teamName]="match.team_b" />
+      </span>
+    </div>
   </div>
   <div class="flex justify-content-center" *ngIf="!isPronostiques; else pronostiques">
     <p><strong>Venue:</strong> {{ match.stadium }}</p>

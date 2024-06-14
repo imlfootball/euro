@@ -45,6 +45,7 @@ import { TabcontentComponent, TabContentDirective } from './shared/components/ta
 import { NumberInputComponent } from './shared/components/number-input/number-input.component';
 import { WindrawComponent } from './shared/components/windraw/windraw.component';
 import { StadiumdetailsComponent } from './components/stadiumdetails/stadiumdetails.component';
+import { TeamperformanceComponent } from './shared/components/teamperformance/teamperformance.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { StadiumdetailsComponent } from './components/stadiumdetails/stadiumdeta
     TabContentDirective,
     NumberInputComponent,
     WindrawComponent,
-    StadiumdetailsComponent
+    StadiumdetailsComponent,
+    TeamperformanceComponent
   ],
   imports: [
     BrowserModule,

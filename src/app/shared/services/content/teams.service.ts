@@ -27,4 +27,10 @@ export class TeamsService {
       map(response => response.data)
     );
   }
+
+  getTeamByName(teamName: string): Observable<Teams[]> {
+    return this.http.get<any>(`https://euro.omediainteractive.net/imleuro/items/teams?filter[name]=${teamName}`).pipe(
+      map(response => response.data)
+    );
+  }
 }

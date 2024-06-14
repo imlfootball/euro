@@ -23,7 +23,12 @@ export interface Teams {
   flag_url: string;
   badge_url: string;
   information: any;
-  showDetails: boolean
+  showDetails: boolean;
+  forme1: string;
+  forme2: string;
+  forme3: string;
+  forme4: string;
+  forme5: string;
 }
 
 export interface Players {
