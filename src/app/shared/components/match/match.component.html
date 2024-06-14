@@ -1,4 +1,4 @@
-<div class="match" [ngClass]="{'donePronostique': pronostiqueDone, 'pronostiqueMode': isPronostiques, 'closed': !pronostiqueDone && closed}">
+<div class="match" [ngClass]="{'donePronostique': pronostiqueDone, 'pronostiqueMode': isPronostiques, 'closed': !pronostiqueDone && closed, 'matchPlayed' : match.fulltime_a !== null && match.fulltime_b !== null }">
   <div class="flex justify-content-between align-items-center mb-3">
     <div class="flex justify-content-center">
       <span class="phase mt-0" *ngIf="match.group; else phase">Groupe {{ match.group }} - M{{ match.id }}</span>
@@ -21,7 +21,7 @@
         </span>
         <span class="teamName">{{ match.team_a }}</span>
       </span>
-      <span class="flex align-items-center justify-content-center mt-4"  *ngIf="match.team_a !== null" >
+      <span class="flex align-items-center justify-content-center mt-4"  *ngIf="match.team_a !== null " >
         <teamperformance [teamName]="match.team_a" />
       </span>
     </div>
@@ -38,7 +38,7 @@
           <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_b " />
         </span>
       </span>
-      <span class="flex align-items-center justify-content-center mt-4" *ngIf="match.team_b  !== null">
+      <span class="flex align-items-center justify-content-center mt-4" *ngIf="match.team_b  !== null ">
         <teamperformance [teamName]="match.team_b" />
       </span>
     </div>
@@ -180,6 +180,35 @@
 
     </div>
   </ng-template>
+
+  <div class="matchResult mt-3" *ngIf="match.fulltime_a !== null && match.fulltime_b !== null">
+    <h4 class="text-center">Résultat officiel du match</h4>
+    <div class="flex">
+      <div class="col-5 p-0">
+        <span class="flex align-items-center justify-content-center">
+          <span class="mr-2 flex">
+            <img src="assets/flags/{{ match.team_a | lowercase }}.png" alt="" class="flag" *ngIf="match.team_a" />
+            <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_a" />
+          </span>
+          <span class="teamScore ml-4 text-3xl">{{ match.fulltime_a }}</span>
+        </span>
+      </div>
+      <div class="col-2  p-0">
+        <div class="flex align-items-center justify-content-center pt-1">
+          -
+        </div>
+      </div>
+      <div class="col-5 p-0">
+        <span class="flex align-items-center justify-content-center">
+          <span class="teamScore mr-4 text-3xl">{{ match.fulltime_b }}</span>
+          <span class="ml-2 flex">
+            <img src="assets/flags/{{ match.team_b | lowercase }}.png" alt="" class="flag" *ngIf="match.team_b" />
+            <img src="assets/flags/unknown.png" alt="" class="flag" *ngIf="!match.team_b " />
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <loader [showLoader]="showLoader" />
