@@ -75,14 +75,14 @@ export class AuthService {
 
   setTokenCookie(token: string){
     const currentDate = new Date();
-    const expiryDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const expiryDate = new Date(currentDate.getTime() + 14 * 24 * 60 * 60 * 1000);
 
     this.cookieService.set('currentToken', token, expiryDate);
   }
 
   setUserCookie(user: string){
     const currentDate = new Date();
-    const expiryDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const expiryDate = new Date(currentDate.getTime() + 14 * 24 * 60 * 60 * 1000);
 
     this.cookieService.set('currentUser', user, expiryDate);
   }
