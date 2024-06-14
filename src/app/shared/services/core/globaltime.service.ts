@@ -11,7 +11,7 @@ export class GlobaltimeService {
   private http = inject(HttpClient);
 
   getMuTime(): Observable<string> {
-    return this.http.get<any>(`http://worldtimeapi.org/api/timezone/Indian/Mauritius`)
+    return this.http.get<any>(`https://worldtimeapi.org/api/timezone/Indian/Mauritius`)
   }
 
 }
