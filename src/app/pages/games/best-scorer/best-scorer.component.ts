@@ -16,7 +16,7 @@ export class BestScorerComponent implements OnInit {
   private correctScorerService = inject(CorrectscorerService);
   private state = inject(StateService);
 
-  private targetDate = new Date(2024, 5, 14, 20, 0, 0);
+  private targetDate = new Date(2024, 5, 14, 22, 45, 0);
   private currentDate = new Date();
 
   protected $goldenBootPlayers!: Observable<Players[]>;
