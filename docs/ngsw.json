@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1718365736439,
+  "timestamp": 1718376740100,
   "index": "/euro/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/euro/favicon.ico",
         "/euro/index.html",
-        "/euro/main-6BIEWMIB.js",
+        "/euro/main-57GHTZ6S.js",
         "/euro/manifest.webmanifest",
         "/euro/polyfills-S3BTP7ME.js",
         "/euro/styles-HSBGO7IP.css"
@@ -299,8 +299,8 @@
     "/euro/assets/vertical-banner-login-campaign.avif": "9d21fe7e07bc70f2f9d2bb31420dfd996463fa36",
     "/euro/assets/vertical-banner-login-campaign.png": "5d59c9020cc8878ef07eba486d51c6885d341500",
     "/euro/favicon.ico": "1845ec8f60315e7a57e75cbb73289744c5d85365",
-    "/euro/index.html": "cc2758ee5c0b14b3b91c3b7b0ef67c499f3bcc07",
-    "/euro/main-6BIEWMIB.js": "76a13a622f12ba0df282310ab73bdd3b91df3dd3",
+    "/euro/index.html": "b19b4e01271c5d02d883ce725be4343c49c9600b",
+    "/euro/main-57GHTZ6S.js": "31024fa9e7140b0bafa276b6667d736ba9f3f625",
     "/euro/manifest.webmanifest": "55993a957017ad6ff982e11a92f17b97c06e2ced",
     "/euro/media/corner-bg-YOV6DW44.png": "5b4d0b967eff6ddac979b5375939f6394036e0a2",
     "/euro/media/down-arrow-V4UHFK2W.png": "b8586e43900253f8c394ee1537614aecc9f369bb",
