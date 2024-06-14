@@ -73,7 +73,7 @@
         </div>
       </div>
 
-      <div class="pronostiqueWrapper" *ngIf="!pronostiqueDone || (!closed && !pronostiqueDone)">
+      <div class="pronostiqueWrapper" *ngIf="!pronostiqueDone && (!closed && !pronostiqueDone)">
 
         <div class="flex justify-content-center mt-2">
           <span class="label">Qui remporte la rencontre ?</span>
@@ -164,12 +164,16 @@
           </div>
         </ng-container>
 
-        <div class="validate flex justify-content-center mb-3">
+        <div class="validate flex justify-content-center mb-3" >
           <button class="btn" alt="Valider pronostique" [disabled]="(matchOutcome ==='' && !calcWinDrawOutcome) || disabled" (click)="sendBet()">Valider mon pronostique</button>
         </div>
 
       </div>
 
+      <div class="jeuFermer flex justify-content-center h-full align-items-center mt-4" *ngIf="closed && !pronostiqueDone">
+        <h3 class="text-center">Pronostique fermer</h3>
+      </div>
+      
       <div class="pronostiqueDone flex flex-column align-items-center mt-4" *ngIf="pronostiqueDone">
         <p>Mon pronostique:</p>
         <h4 class="mt-0 mb-4 text-3xl"><strong>{{ donePronostique.winner_draw }}</strong></h4>

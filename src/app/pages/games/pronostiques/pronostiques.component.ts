@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Matches } from '../../../shared/contracts/matches.contract';
 import { map } from 'rxjs/operators';
 import { StateService } from '../../../shared/services/core/state.service';
+import { GlobaltimeService } from '../../../shared/services/core/globaltime.service';
 
 @Component({
   selector: 'app-pronostiques',
@@ -14,11 +15,22 @@ export class PronostiquesComponent {
 
   private matchesService = inject(MatchesService);
   private stateService = inject(StateService);
+  private globalTime = inject(GlobaltimeService);
   protected isLoggedIn: boolean = false;
+  protected $today!:Observable<any>;
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
 
   ngOnInit(): void {
+
+    this.$today = this.globalTime.getMuTime();
+
+    // this.$today.subscribe({
+    //   next:(res)=> {
+    //     console.log(res.datetime);
+    //   }
+    // })
+
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
     );

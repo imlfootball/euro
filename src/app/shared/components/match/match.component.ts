@@ -6,6 +6,9 @@ import { TeamsService } from '../../services/content/teams.service';
 import { StateService } from '../../services/core/state.service';
 import { Pronostiques } from '../../contracts/pronostiques.contract';
 import { PredictionsService } from '../../services/games/predictions.service';
+import { GlobaltimeService } from '../../services/core/globaltime.service';
+import { parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 
 @Component({
   selector: 'app-match',
@@ -17,10 +20,12 @@ export class MatchComponent implements OnInit{
   teamService = inject(TeamsService);
   predictionService = inject(PredictionsService);
   stateService = inject(StateService);
+  globalTime = inject(GlobaltimeService);
 
   @Input() match!: Matches;
   @Input() isPronostiques: boolean = false;
   @Input() disabled: boolean = false;
+  @Input() dateTime!: string;
 
   protected showLoader: boolean = false;
   protected pronostiqueDone: boolean = false;
@@ -33,15 +38,17 @@ export class MatchComponent implements OnInit{
   protected fullTimeB: number = 0;
   protected scorer: string = '';
   protected matchOutcome: string = '';
-  protected today: Date = new Date();
   protected limitDate!: Date;
   protected closed: boolean = false;
   protected calcWinDrawOutcome: boolean = false;
+  protected today!: Date;
 
   protected $players!: Observable<Players[]>;
   protected donePronostique!: any;
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
+
+    this.today = new Date(this.dateTime.slice(0,-6));
 
     this.stateService.userState.subscribe({
       next:(response)=> {
@@ -83,39 +90,45 @@ export class MatchComponent implements OnInit{
   }
 
   sendBet(){
-    let currentDate = new Date();
-    if(currentDate < this.limitDate ) {
-      let currentOutcome = this.matchOutcome;
-      this.showLoader = true;
+    this.globalTime.getMuTime().subscribe({
+      next: (res: any)=>{
+        let currentDate = new Date(res.datetime.slice(0,-6));
 
-      if(this.calcWinDrawOutcome){
-        currentOutcome = this.calculateWinDraw( this.match.team_a, this.match.team_b, this.fullTimeA, this.fullTimeB);
-      }
-
-      let prediction = {
-        user: this.userTrigramme,
-        game_id: this.match.id,
-        halftime_a: this.halfTimeA?.toString(),
-        halftime_b: this.halfTimeB?.toString(),
-        fulltime_a: this.fullTimeA?.toString(),
-        fulltime_b: this.fullTimeB?.toString(),
-        scorer: this.scorer,
-        winner_draw: currentOutcome,
-      }
-
-      this.predictionService.sendPrediction(prediction).subscribe({
-        next:()=>{
+        if(currentDate < this.limitDate ) {
+          let currentOutcome = this.matchOutcome;
+          this.showLoader = true;
+    
+          if(this.calcWinDrawOutcome){
+            currentOutcome = this.calculateWinDraw( this.match.team_a, this.match.team_b, this.fullTimeA, this.fullTimeB);
+          }
+    
+          let prediction = {
+            user: this.userTrigramme,
+            game_id: this.match.id,
+            halftime_a: this.halfTimeA?.toString(),
+            halftime_b: this.halfTimeB?.toString(),
+            fulltime_a: this.fullTimeA?.toString(),
+            fulltime_b: this.fullTimeB?.toString(),
+            scorer: this.scorer,
+            winner_draw: currentOutcome,
+          }
+    
+          this.predictionService.sendPrediction(prediction).subscribe({
+            next:()=>{
+              location.reload();
+            },
+            error:(error)=>{
+              console.log(error);
+              location.reload();
+              this.showLoader = false;
+            }
+          })
+        } else {
           location.reload();
-        },
-        error:(error)=>{
-          console.log(error);
-          location.reload();
-          this.showLoader = false;
         }
-      })
-    } else {
-      location.reload();
-    }
+      }
+    })
+
   }
 
   calculateWinDraw(teamA: string, teamB: string, scoreA: number, scoreB: number): string {
