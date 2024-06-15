@@ -4,6 +4,7 @@ import { TeamsService } from '../../../shared/services/content/teams.service';
 import { Observable, map } from 'rxjs';
 import { Teams }  from '../../../shared/contracts/teams.contract';
 import { breadCrump } from '../../../shared/components/breadcrump/breadcrump.component';
+import { GlobaltimeService } from '../../../shared/services/core/globaltime.service';
 
 @Component({
   selector: 'app-teams',
@@ -17,6 +18,8 @@ export class TeamsComponent implements OnInit {
 
   private stateService = inject(StateService);
 
+  private globalTime = inject(GlobaltimeService);
+
   protected $teamsData?: Observable<Teams[]>;
 
   protected breadCrumpDefault: breadCrump[] = [{label: 'Les Equipes', route: 'closeTeamDetails', active: true }];
@@ -25,7 +28,10 @@ export class TeamsComponent implements OnInit {
 
   protected choosenTeam!: Teams | null;
 
+  protected $today!: Observable<any>;
+
   ngOnInit(){
+    this.$today = this.globalTime.getMuTime();
     this.breadCrumpData = this.breadCrumpDefault;
     this.setTeamsData();
   }
