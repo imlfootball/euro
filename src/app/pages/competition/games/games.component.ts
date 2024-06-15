@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatchesService } from '../../../shared/services/content/matches.service';
 import { Matches } from '../../../shared/contracts/matches.contract';
+import { GlobaltimeService } from '../../../shared/services/core/globaltime.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class GamesComponent implements OnInit{
 
   private matchesService = inject(MatchesService);
+  private globaltime = inject(GlobaltimeService);
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
 
