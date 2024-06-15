@@ -13,11 +13,13 @@ import { map } from 'rxjs/operators';
 export class GamesComponent implements OnInit{
 
   private matchesService = inject(MatchesService);
-  private globaltime = inject(GlobaltimeService);
+  private globalTime = inject(GlobaltimeService);
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
+  protected $today!: Observable<any>;
 
   ngOnInit(): void {
+    this.$today = this.globalTime.getMuTime();
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
     );

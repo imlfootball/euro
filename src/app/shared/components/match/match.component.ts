@@ -52,10 +52,12 @@ export class MatchComponent implements OnInit{
 
     this.stateService.userState.subscribe({
       next:(response)=> {
-        (response.id)? this.userId = parseInt(response.id) : "";
-        (response.last_name)? this.userTrigramme = response.last_name : "";
-        if(this.isPronostiques){
-          this.verfierMonPronostique();
+        if(response.id !== null) {
+          (response.id)? this.userId = parseInt(response.id) : "";
+          (response.last_name)? this.userTrigramme = response.last_name : "";
+          if(this.isPronostiques){
+            this.verfierMonPronostique();
+          }
         }
       }
     })
