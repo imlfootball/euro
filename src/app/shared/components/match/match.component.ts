@@ -7,8 +7,6 @@ import { StateService } from '../../services/core/state.service';
 import { Pronostiques } from '../../contracts/pronostiques.contract';
 import { PredictionsService } from '../../services/games/predictions.service';
 import { GlobaltimeService } from '../../services/core/globaltime.service';
-import { parseISO } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
 
 @Component({
   selector: 'app-match',
@@ -46,7 +44,7 @@ export class MatchComponent implements OnInit{
   protected $players!: Observable<Players[]>;
   protected donePronostique!: any;
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
 
     this.today = new Date(this.dateTime.slice(0,-6));
 
@@ -99,11 +97,11 @@ export class MatchComponent implements OnInit{
         if(currentDate < this.limitDate ) {
           let currentOutcome = this.matchOutcome;
           this.showLoader = true;
-    
+
           if(this.calcWinDrawOutcome){
             currentOutcome = this.calculateWinDraw( this.match.team_a, this.match.team_b, this.fullTimeA, this.fullTimeB);
           }
-    
+
           let prediction = {
             user: this.userTrigramme,
             game_id: this.match.id,
@@ -114,7 +112,7 @@ export class MatchComponent implements OnInit{
             scorer: this.scorer,
             winner_draw: currentOutcome,
           }
-    
+
           this.predictionService.sendPrediction(prediction).subscribe({
             next:()=>{
               location.reload();
