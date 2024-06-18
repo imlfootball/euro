@@ -11,7 +11,7 @@ export class RankingComponent {
   private rankCalcSercvice = inject(RankingcalculationService);
 
   ngOnInit():void {
-    this.rankCalcSercvice.calcRankings();
+    this.rankCalcSercvice.startCalcRanking();
   }
 
 }

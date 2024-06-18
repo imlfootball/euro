@@ -44,7 +44,7 @@ export class MatchesService {
   }
 
   getPlayedMatches(): Observable<Matches[]>{
-    return this.http.get<matchesApiData>(`https://euro.omediainteractive.net/imleuro/items/matches?filter[fulltime_a][nempty]`).pipe(
+    return this.http.get<matchesApiData>(`https://euro.omediainteractive.net/imleuro/items/matches?filter[fulltime_b][nnull]`).pipe(
       map(response => response.data)
     );
   }

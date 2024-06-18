@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map, groupBy, mergeMap, toArray, reduce } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { MatchesService } from '../content/matches.service';
 import { Matches } from '../../contracts/matches.contract';
@@ -34,67 +35,173 @@ export class RankingcalculationService {
   private matchService = inject(MatchesService);
   private predictionService = inject(PredictionsService);
   private authService = inject(AuthService);
+  private rankingToken!: string;
+  private $pronostiques!: Observable<any>;
 
-  private sudo = {
-    'email': 'infomil.foot@gmail.com',
-    'password': '1nf0m1l2024'
+  private rankingBot = {
+    'email': 'ranking.bot@infomil.mu',
+    'password': 'infomil'
   }
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    })
-  };
-
-
-
-  calcRankings(): void {
-
-  //   let results:Observable<Matches[]>;
-
-  //   results = this.matchService.getPlayedMatches();
-
-  //   results.subscribe({
-  //     next: (results) =>{
-  //       results.forEach((result)=>{
-  //         console.log('Result for :', result.id, result.phase, result.team_a, result.fulltime_a, result.team_b, result.fulltime_b, result.winner_point, result.fulltime_point, result.halftime_point,  result.scorer_point);
-
-  //         this.getUsersPronostique(result.id).subscribe({
-  //           next: (response)=>{
-  //             console.log(response);
-  //           }
-  //         })
-  //       })
-  //     }
-  //   });
-
-  //   return results;
-
-  this.startSUtask();
-
+  startCalcRanking(): void {
+    this.getToken().subscribe({
+      next: (result) => {
+        this.rankingToken = result.data.token;
+        this.$pronostiques = this.getUsersPronostiques(this.rankingToken);
+  
+        this.$pronostiques.subscribe({
+          next: (response) => {
+            this.calcRanking(response);
+          }
+        });
+      }
+    });
   }
 
-  startSUtask(): void {
-    this.authService.trylogin(this.sudo.email, this.sudo.password).subscribe({
-      next: (res)=>{
-        console.log(res.data.token);
+  getToken(): Observable<any> {
+    return this.authService.trylogin(this.rankingBot.email, this.rankingBot.password);
+  }
+
+  private getUsersPronostiques(token: string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    }
+
+    return this.http.get<pronostiquesApiData>(`https://euro.omediainteractive.net/imleuro/items/pronostiques`, httpOptions).pipe(
+      map(response => response.data),
+      mergeMap(pronostiques => from(pronostiques)),
+      groupBy((pronostique: Pronostiques) => pronostique.user),
+      mergeMap(group => group.pipe(toArray())),
+      reduce((acc, group) => {
+        const user = group[0].user;
+        if (user) {
+          acc[user] = group;
+        }
+        return acc;
+      }, {} as { [user: string]: Pronostiques[] })
+    );
+  }
+
+  private calcRanking(pronostiques: any):void {
+    
+
+    this.getMatchesPlayed().subscribe({
+      next: (playedMatches: any)=>{
+        let rankingObj: any[] = [];
+        let resultMatches = playedMatches;
+        let keys = Object.keys(pronostiques);
+
+        keys.forEach((key) => {
+            let point = 0;
+            pronostiques[key].forEach((prono: any) => {
+                point = this.calcResult(prono.game_id, prono, resultMatches) + point;
+            });
+
+            rankingObj.push({key, point});
+        });
+
+        // console.log(rankingObj);
+
+        this.updateRanking(rankingObj);
       }
     })
   }
 
-  getUsers(): Observable<any> {
-    let users = new Observable<any>;
-    return users;
-  }
 
-  getMatchesPlayed():Observable<Matches[]> {
+  private getMatchesPlayed():Observable<Matches[]> {
     return this.matchService.getPlayedMatches();
   }
 
-  getUsersPronostiques(): Observable<Pronostiques[]> {
-    return this.http.get<pronostiquesApiData>(`https://euro.omediainteractive.net/imleuro/items/pronostiques`).pipe(
-      map(response => response.data)
-    );
+  private calcResult(gameId: any, pronostique: any, results: any): number{
+    let gameIndex = parseInt(pronostique.game_id) - 1;
+    let finalPoint: number = 0;
+
+    if(results[gameIndex]){
+      let game = results[gameIndex];
+
+      let winner_point = game.winner_point;
+      let halftime_point = game.halftime_point;
+      let fulltime_point = game.fulltime_point;
+      let scorer_point = game.scorer_point;
+
+      let halftime_a = pronostique.halftime_a;
+      let halftime_b = pronostique.halftime_b;
+      let fulltime_a = pronostique.fulltime_a;
+      let fulltime_b = pronostique.fulltime_b;
+      let winner_draw = pronostique.winner_draw;
+      let scorers = pronostique.scorer;
+
+      // Group Stage Calculation
+      if(game.phase === 'Group Stage'){
+        let point;
+
+        (game.winner_draw === winner_draw)? point = winner_point : point = 0;
+
+        finalPoint = finalPoint + point;
+      }
+
+      // First Game
+      if(game.phase === 'Group Stage' && game.id === 1){
+        let point;
+        (parseInt(game.fulltime_a) === parseInt(fulltime_a) && parseInt(game.fulltime_b) === parseInt(fulltime_b))? point = parseInt(fulltime_point) : point = 0;
+
+        finalPoint = finalPoint + point;
+      }
+
+      // Round of 16
+      if(game.phase === 'Round of 16') {
+
+      }
+    }
+
+    return finalPoint;
+  }
+
+  private updateRanking(rankingObj: any[]): void {
+    // // Sort the array by point in descending order, and then by key for consistency
+    // rankingObj.sort((a, b) => {
+    //   if (b.point !== a.point) {
+    //       return b.point - a.point; // Sort by point descending
+    //   } else {
+    //       return a.key.localeCompare(b.key); // If points are the same, sort by key ascending
+    //   }
+    // });
+
+    // // Add rank to each object
+    // let rank = 1;
+    // rankingObj.forEach((obj, index) => {
+    //   if (index > 0 && obj.point !== rankingObj[index - 1].point) {
+    //       rank = index + 1; // Update rank only if the current point is different from the previous
+    //   }
+    //   obj.rank = rank;
+    // });
+
+    // Sort the array by point in descending order, and then by key for consistency
+    rankingObj.sort((a, b) => {
+      if (b.point !== a.point) {
+          return b.point - a.point; // Sort by point descending
+      } else {
+          return a.key.localeCompare(b.key); // If points are the same, sort by key ascending
+      }
+    });
+
+    // Add rank to each object
+    let rank = 1;
+    let previousPoint: number | null = null;
+    rankingObj.forEach((obj, index) => {
+      if (previousPoint === null || obj.point < previousPoint) {
+          previousPoint = obj.point;
+          obj.rank = rank;
+          rank++;
+      } else {
+          obj.rank = rank - 1;
+      }
+    });
+
+    console.log(rankingObj);
   }
 
 }
