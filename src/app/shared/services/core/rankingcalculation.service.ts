@@ -43,6 +43,12 @@ export class RankingcalculationService {
     'password': 'infomil'
   }
 
+  getCurrentrankings(): Observable<any> {
+    return this.http.get<any>(`https://euro.omediainteractive.net/imleuro/items/pronostiques_rankings`).pipe(
+      map(response => response.data));
+  }
+
+
   startCalcRanking(): void {
     this.getToken().subscribe({
       next: (result) => {
@@ -178,31 +184,34 @@ export class RankingcalculationService {
           rank = index + 1; // Update rank only if the current point is different from the previous
       }
       obj.rank = rank;
+      obj.status = 'published'
     });
 
-    // Sort the array by point in descending order, and then by key for consistency
-    // rankingObj.sort((a, b) => {
-    //   if (b.point !== a.point) {
-    //       return b.point - a.point; // Sort by point descending
-    //   } else {
-    //       return a.key.localeCompare(b.key); // If points are the same, sort by key ascending
-    //   }
-    // });
 
-    // // Add rank to each object
-    // let rank = 1;
-    // let previousPoint: number | null = null;
-    // rankingObj.forEach((obj, index) => {
-    //   if (previousPoint === null || obj.point < previousPoint) {
-    //       previousPoint = obj.point;
-    //       obj.rank = rank;
-    //       rank++;
-    //   } else {
-    //       obj.rank = rank - 1;
-    //   }
-    // });
+    let rankingData = {
+      status: 'published',
+      ranking_json: rankingObj
+    }
 
-    console.log(rankingObj);
+    let token = this.cookieService.get('currentToken');
+  
+    if (token) {
+      let httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      };
+
+      this.http.post(`https://euro.omediainteractive.net/imleuro/items/pronostiques_rankings`, rankingData, httpOptions).subscribe({
+        next: (response)=>{
+          console.log(response);
+        },
+        error: (error)=>{
+          throw (error.msg)
+        }
+      });
+    }
   }
 
 }

@@ -11,6 +11,10 @@
 
   <h4>Le classement sera opérationel bientot !</h4>
 
+  <ng-container *ngIf="$ranks | async as ranks; else loader;">
+
+  </ng-container>
+
 </div>
 
 <ng-template #loader>
