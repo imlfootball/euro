@@ -48,7 +48,7 @@ export class RankingcalculationService {
       next: (result) => {
         this.rankingToken = result.data.token;
         this.$pronostiques = this.getUsersPronostiques(this.rankingToken);
-  
+
         this.$pronostiques.subscribe({
           next: (response) => {
             this.calcRanking(response);
@@ -86,7 +86,7 @@ export class RankingcalculationService {
   }
 
   private calcRanking(pronostiques: any):void {
-    
+
 
     this.getMatchesPlayed().subscribe({
       next: (playedMatches: any)=>{
@@ -97,6 +97,7 @@ export class RankingcalculationService {
         keys.forEach((key) => {
             let point = 0;
             pronostiques[key].forEach((prono: any) => {
+                // console.log(key);
                 point = this.calcResult(prono.game_id, prono, resultMatches) + point;
             });
 
@@ -161,24 +162,6 @@ export class RankingcalculationService {
   }
 
   private updateRanking(rankingObj: any[]): void {
-    // // Sort the array by point in descending order, and then by key for consistency
-    // rankingObj.sort((a, b) => {
-    //   if (b.point !== a.point) {
-    //       return b.point - a.point; // Sort by point descending
-    //   } else {
-    //       return a.key.localeCompare(b.key); // If points are the same, sort by key ascending
-    //   }
-    // });
-
-    // // Add rank to each object
-    // let rank = 1;
-    // rankingObj.forEach((obj, index) => {
-    //   if (index > 0 && obj.point !== rankingObj[index - 1].point) {
-    //       rank = index + 1; // Update rank only if the current point is different from the previous
-    //   }
-    //   obj.rank = rank;
-    // });
-
     // Sort the array by point in descending order, and then by key for consistency
     rankingObj.sort((a, b) => {
       if (b.point !== a.point) {
@@ -190,16 +173,34 @@ export class RankingcalculationService {
 
     // Add rank to each object
     let rank = 1;
-    let previousPoint: number | null = null;
     rankingObj.forEach((obj, index) => {
-      if (previousPoint === null || obj.point < previousPoint) {
-          previousPoint = obj.point;
-          obj.rank = rank;
-          rank++;
-      } else {
-          obj.rank = rank - 1;
+      if (index > 0 && obj.point !== rankingObj[index - 1].point) {
+          rank = index + 1; // Update rank only if the current point is different from the previous
       }
+      obj.rank = rank;
     });
+
+    // Sort the array by point in descending order, and then by key for consistency
+    // rankingObj.sort((a, b) => {
+    //   if (b.point !== a.point) {
+    //       return b.point - a.point; // Sort by point descending
+    //   } else {
+    //       return a.key.localeCompare(b.key); // If points are the same, sort by key ascending
+    //   }
+    // });
+
+    // // Add rank to each object
+    // let rank = 1;
+    // let previousPoint: number | null = null;
+    // rankingObj.forEach((obj, index) => {
+    //   if (previousPoint === null || obj.point < previousPoint) {
+    //       previousPoint = obj.point;
+    //       obj.rank = rank;
+    //       rank++;
+    //   } else {
+    //       obj.rank = rank - 1;
+    //   }
+    // });
 
     console.log(rankingObj);
   }
