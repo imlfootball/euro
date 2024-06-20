@@ -203,7 +203,6 @@ export class RankingcalculationService {
       this.http.post(`https://euro.omediainteractive.net/imleuro/items/pronostiques_rankings`, rankingData, httpOptions).subscribe({
         next: (response)=>{
           console.log(response);
-          location.reload();
         },
         error: (error)=>{
           throw (error.msg)

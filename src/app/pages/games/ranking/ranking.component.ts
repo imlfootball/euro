@@ -23,19 +23,33 @@ export class RankingComponent implements OnInit, OnDestroy {
 
     this.$ranks.subscribe({
       next: (response)=>{
+
         if(response.length < 1){
           this.updateRanks();
-        } else {
-          let idx = response.length - 1;
-          let today = new Date(this.formatDate(this.today));
-          let lastUpdate = new Date(response[idx].modified_on.substring(0, 10));
-          if(today > lastUpdate){
-            this.updateRanks();
-          } else {
-            this.latestRank = response[idx];
-            this.showLoader = false;
-          }
+          setTimeout(() => {
+            location.reload();
+          }, 3000);
+        } 
+
+        let idx = response.length - 1;
+        this.latestRank = response[idx];
+
+        if(this.latestRank){
+          this.showLoader = false;
         }
+
+        // else {
+        //   let idx = response.length - 1;
+        //   let today = new Date(this.formatDate(this.today));
+        //   let lastUpdate = new Date(response[idx].modified_on.substring(0, 10));
+        //   if(today > lastUpdate){
+        //     // this.updateRanks();
+        //     this.showLoader = false;
+        //   } else {
+        //     this.latestRank = response[idx];
+        //     this.showLoader = false;
+        //   }
+        // }
       }
     })
   }
