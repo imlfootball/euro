@@ -18,18 +18,13 @@ export class PronostiquesComponent {
   private globalTime = inject(GlobaltimeService);
   protected isLoggedIn: boolean = false;
   protected $today!:Observable<any>;
+  protected activeMatches: boolean = true;
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
 
   ngOnInit(): void {
 
     this.$today = this.globalTime.getMuTime();
-
-    // this.$today.subscribe({
-    //   next:(res)=> {
-    //     console.log(res.datetime);
-    //   }
-    // })
 
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
@@ -66,4 +61,7 @@ export class PronostiquesComponent {
     return Object.keys(groupedMatches).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
   }
 
+  compareDates(date1: string, date2: string): boolean {
+    return date1.slice(0,10) > date2;
+  }
 }

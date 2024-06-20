@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { Matches } from '../../contracts/matches.contract';
 import { Observable } from 'rxjs';
 import { Players } from '../../contracts/teams.contract';
@@ -24,6 +24,8 @@ export class MatchComponent implements OnInit{
   @Input() isPronostiques: boolean = false;
   @Input() disabled: boolean = false;
   @Input() dateTime!: string;
+  @Input() hasPlayed!: boolean;
+  @Output() hasPlayedChange = new EventEmitter<boolean>;
 
   protected showLoader: boolean = false;
   protected pronostiqueDone: boolean = false;
@@ -43,6 +45,7 @@ export class MatchComponent implements OnInit{
 
   protected $players!: Observable<Players[]>;
   protected donePronostique!: any;
+
 
   ngOnInit(): void {
 

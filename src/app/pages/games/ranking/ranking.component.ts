@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { RankingcalculationService } from '../../../shared/services/core/rankingcalculation.service';
 import { Observable, last } from 'rxjs';
 import { GlobaltimeService } from '../../../shared/services/core/globaltime.service';
@@ -8,7 +8,7 @@ import { GlobaltimeService } from '../../../shared/services/core/globaltime.serv
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.scss'
 })
-export class RankingComponent {
+export class RankingComponent implements OnInit, OnDestroy {
 
   private rankCalcSercvice = inject(RankingcalculationService);
   private globalTime = inject(GlobaltimeService);
@@ -51,4 +51,7 @@ export class RankingComponent {
     return `${year}-${month}-${day}`;
   }
 
+  ngOnDestroy(): void {
+    this.$ranks.subscribe().unsubscribe();
+  }
 }
