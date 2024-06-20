@@ -14,12 +14,11 @@ export class RankingComponent {
   private globalTime = inject(GlobaltimeService);
   private today: Date = new Date();
 
+  protected showLoader: boolean = true;
   protected $ranks!: Observable<any>;
+  protected latestRank!: any;
 
   ngOnInit():void {
-
-    console.log(this.today);
-    
     this.$ranks = this.rankCalcSercvice.getCurrentrankings();
 
     this.$ranks.subscribe({
@@ -28,18 +27,28 @@ export class RankingComponent {
           this.updateRanks();
         } else {
           let idx = response.length - 1;
+          let today = new Date(this.formatDate(this.today));
           let lastUpdate = new Date(response[idx].modified_on.substring(0, 10));
-          console.log(lastUpdate < this.today)
-          // console.log(new Date(response[idx].modified_on).toString().substring(0, 15));
+          if(today > lastUpdate){
+            this.updateRanks();
+          } else {
+            this.latestRank = response[idx];
+            this.showLoader = false;
+          }
         }
       }
     })
   }
 
-  updateRanks(): boolean {
-    console.log('Update rankings');
+  updateRanks(): void {
     this.rankCalcSercvice.startCalcRanking();
-    return true;
+  }
+
+  formatDate(date: Date) {
+    let year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
 }

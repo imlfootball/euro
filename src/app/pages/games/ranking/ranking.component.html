@@ -9,14 +9,31 @@
 
 <div class="container pt-4">
 
-  <h4>Le classement sera opérationel bientot !</h4>
 
-  <ng-container *ngIf="$ranks | async as ranks; else loader;">
 
+  <ng-container *ngIf="$ranks | async as ranks;">
+
+    <ng-container *ngIf="latestRank">
+      <h2 class="flex justify-content-between mb-4">Classement du jeu de pronostic <span class="update"><span class="material-symbols-outlined">
+        history_toggle_off
+        </span> Mise a jour le <span class="dateUpdate">{{ latestRank.modified_on | date: 'medium' }}</span></span></h2>
+      <table class="tableRanking" [cellPadding]="0" [cellSpacing]="0">
+        <tr>
+          <th>Rang</th>
+          <th>Trigramme</th>
+          <th>Points</th>
+        </tr>
+        <ng-container *ngFor="let rank of latestRank.ranking_json">
+          <tr>
+            <td>{{ rank.rank }}</td>
+            <td>{{ rank.key | uppercase }}</td>
+            <td>{{ rank.point }}</td>
+          </tr>
+        </ng-container>
+      </table>
+    </ng-container>
   </ng-container>
 
 </div>
 
-<ng-template #loader>
-  <loader [showLoader]="false" />
-</ng-template>
+<loader [showLoader]="showLoader" />

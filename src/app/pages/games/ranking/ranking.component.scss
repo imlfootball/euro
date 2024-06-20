@@ -20,3 +20,36 @@
     width: 32.8% !important;
   }
 }
+
+h2 {
+  span.update {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+
+    span.material-symbols-outlined {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+      color: black;
+    }
+    span.dateUpdate {
+      font-size: 1rem;
+      color: $primaryColor;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.tableRanking {
+  width: 100%;
+  border: 1px solid #d3d3d3;
+
+  tr th,
+  tr td {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #d3d3d3;
+    border-collapse: collapse;
+  }
+}

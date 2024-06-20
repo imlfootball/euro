@@ -103,14 +103,11 @@ export class RankingcalculationService {
         keys.forEach((key) => {
             let point = 0;
             pronostiques[key].forEach((prono: any) => {
-                // console.log(key);
                 point = this.calcResult(prono.game_id, prono, resultMatches) + point;
             });
 
             rankingObj.push({key, point});
         });
-
-        // console.log(rankingObj);
 
         this.updateRanking(rankingObj);
       }
@@ -193,8 +190,8 @@ export class RankingcalculationService {
       ranking_json: rankingObj
     }
 
-    let token = this.cookieService.get('currentToken');
-  
+    let token = this.rankingToken;
+
     if (token) {
       let httpOptions = {
         headers: new HttpHeaders({
@@ -206,6 +203,7 @@ export class RankingcalculationService {
       this.http.post(`https://euro.omediainteractive.net/imleuro/items/pronostiques_rankings`, rankingData, httpOptions).subscribe({
         next: (response)=>{
           console.log(response);
+          location.reload();
         },
         error: (error)=>{
           throw (error.msg)
