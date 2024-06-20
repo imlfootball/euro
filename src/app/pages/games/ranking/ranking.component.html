@@ -14,7 +14,7 @@
   <ng-container *ngIf="$ranks | async as ranks;">
 
     <ng-container *ngIf="latestRank">
-      <h2 class="flex justify-content-between mb-4">Classement du jeu de pronostic <span class="update"><span class="material-symbols-outlined">
+      <h2 class="flex flex-column justify-content-between mb-4 md:flex-row">Classement du jeu de pronostic <span class="update mt-4 md:mt-0"><span class="material-symbols-outlined">
         history_toggle_off
         </span> Mise a jour le <span class="dateUpdate">{{ latestRank.modified_on | date: 'medium' }}</span></span></h2>
       <table class="tableRanking" [cellPadding]="0" [cellSpacing]="0">
