@@ -42,7 +42,7 @@ export class PronostiquesComponent {
     const daysFromNow = new Date();
 
     // define here interval on which the matches should appear
-    daysFromNow.setDate(now.getDate() + 4);
+    daysFromNow.setDate(now.getDate() + 2);
 
     return matches.reduce((groups, match) => {
       const matchDate = new Date(match.date);
