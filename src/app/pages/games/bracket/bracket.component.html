@@ -7,10 +7,297 @@
   </div>
 </div>
 
-<div class="container pt-4">
+<div class="container pt-6">
 
-<h4>Le jeu du bracket arrive bientot !</h4>
-<p>Après la phase de groupe, prédisez le vainqueur de chaque match jusqu’à la finale.</p>
+  <div class="bracket">
+    <div class="round round-1">
+      <h3 class="mobile mb-2">Huitièmes de finale</h3>
+      <div class="matchup">
+        <div class="team">
+          <span class="matchInfo">R16-1 - 29/06/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/suisse.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/italie.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-1', $event)" [disabled]="false" [(ngModel)]="winnerR161">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="Suisse">Suisse</option>
+                  <option value="Italie">Italie</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R16-3 - 30/06/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-3', $event)" [disabled]="false" [(ngModel)]="winnerR163">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="matchup">
+        <div class="team mt-2">
+          <span class="matchInfo">R16-7 - 02/07/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-7', $event)" [disabled]="false" [(ngModel)]="winnerR167">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R16-8 - 02/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-8', $event)" [disabled]="false" [(ngModel)]="winnerR168">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="matchup">
+        <div class="team">
+          <span class="matchInfo">R16-2 - 29/06/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/allemagne.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-2', $event)" [disabled]="false" [(ngModel)]="winnerR162">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="Allemagne">Allemagne</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R16-4 - 30/06/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/espagne.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-4', $event)" [disabled]="false" [(ngModel)]="winnerR164">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="Espagne">Espagne</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="matchup">
+        <div class="team mt-2">
+          <span class="matchInfo">R16-5 - 01/07/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-5', $event)" [disabled]="false" [(ngModel)]="winnerR165">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R16-6 - 01/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/portugal.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r16-6', $event)" [disabled]="false" [(ngModel)]="winnerR166">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="round round-2">
+      <h3 class="mobile mb-2">Quart de finale</h3>
+      <div class="matchup flex flex-column justify-content-center">
+        <div class="team mt-2">
+          <span class="matchInfo">R4-3 - 06/07/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r4-3', $event)" [disabled]="false" [(ngModel)]="winnerR43">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R4-4 - 06/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r4-4', $event)" [disabled]="false" [(ngModel)]="winnerR44">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spacer hidden md:block"></div>
+      <div class="matchup flex flex-column justify-content-center">
+        <div class="team mt-2">
+          <span class="matchInfo">R4-1 - 05/07/24 - 20:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r4-1', $event)" [disabled]="false" [(ngModel)]="winnerR41">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">R4-2 - 05/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('r4-2', $event)" [disabled]="false" [(ngModel)]="winnerR42">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="round round-3">
+      <h3 class="mobile mb-2">Semi finale</h3>
+      <div class="matchup flex flex-column justify-content-center">
+        <div class="team mt-2">
+          <span class="matchInfo">S2 - 10/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('s1', $event)" [disabled]="false" [(ngModel)]="winnerSemi1">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="team mt-2">
+          <span class="matchInfo">S1 - 09/07/24 - 23:00</span>
+          <div class="pt-2 flex align-items-center justify-content-between">
+            <div class="flags flex align-items-center">
+              <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+            </div>
+            <div class="dropdown">
+              <div class="input mb-0 p-0">
+                <select name="team" id="teamSelection" (change)="selectedWinner('s2', $event)" [disabled]="false" [(ngModel)]="winnerSemi2">
+                  <option value="-" selected>Gagnant ?</option>
+                  <option value="TBC">TBC</option>
+                  <option value="TBC">TBC</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="round round-4">
+      <h3 class="mobile mb-2">Finale</h3>
+        <div class="matchup">
+          <div class="team">
+            <span class="matchInfo">Finale - 14/07/24 - 20:00</span>
+            <div class="pt-2 flex align-items-center justify-content-between">
+              <div class="flags flex align-items-center">
+                <img src="../../../../assets/flags/unknown.png" alt="" /> <span class="vs">VS</span> <img src="../../../../assets/flags/unknown.png" alt="" />
+              </div>
+              <div class="dropdown">
+                <div class="input mb-0 p-0">
+                  <select name="team" id="teamSelection" (change)="selectedWinner('final', $event)" [disabled]="false" [(ngModel)]="winnerEuro">
+                    <option value="-" selected>Gagnant ?</option>
+                    <option value="TBC">TBC</option>
+                    <option value="TBC">TBC</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
 </div>
 
 <ng-template #loader>

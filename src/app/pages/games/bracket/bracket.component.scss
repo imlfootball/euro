@@ -20,3 +20,80 @@
     width: 32.8% !important;
   }
 }
+
+.bracket {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 25%;
+}
+
+.spacer {
+  height: 230px;
+  display: block;
+}
+
+.matchup {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.team {
+  padding: 20px 10px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  position: relative;
+
+  .matchInfo {
+    position: absolute;
+    top: 4px;
+    left: 12px;
+    font-size: 10px;
+    color: #222;
+    font-weight: bold;
+  }
+
+  .vs {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 0 0.5rem;
+  }
+
+  .flags img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.team:last-child {
+  border-bottom: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 990px) {
+  .bracket {
+      flex-direction: column;
+  }
+
+  .round {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .team {
+    width: 100%;
+  }
+}
