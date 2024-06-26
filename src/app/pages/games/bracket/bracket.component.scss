@@ -35,6 +35,13 @@
   justify-content: center;
   gap: 20px;
   width: 25%;
+
+  .btnValider {
+    bottom: -50px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
 }
 
 .spacer {
@@ -44,21 +51,41 @@
 
 .matchup {
   background-color: white;
-  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   text-align: center;
+  overflow: hidden;
 }
 
 .team {
-  padding: 20px 10px;
+  padding: 30px 15px;
   border-bottom: 1px solid #ddd;
   width: 100%;
   position: relative;
 
+
+  &.completed,
+  &.completed select {
+    background-color: $green;
+    color: white;
+
+    .matchInfo {
+      color: white;
+    }
+
+    &.finale,
+    &.finale select {
+      background-color: darken($yellow, 20%);
+    }
+  }
+
+  &.completed select {
+    border-color: white;
+  }
+
   .matchInfo {
     position: absolute;
-    top: 4px;
+    top: 8px;
     left: 12px;
     font-size: 10px;
     color: #222;
@@ -73,8 +100,8 @@
   }
 
   .flags img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
 }
 
