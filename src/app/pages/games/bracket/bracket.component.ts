@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { StateService } from '../../../shared/services/core/state.service';
+import { GlobaltimeService } from '../../../shared/services/core/globaltime.service';
+import { BracketService } from '../../../shared/services/games/bracket.service';
+import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-bracket',
   templateUrl: './bracket.component.html',
   styleUrl: './bracket.component.scss'
 })
-export class BracketComponent {
+export class BracketComponent implements OnInit {
+
+  private stateService = inject(StateService);
+  private globalTime = inject(GlobaltimeService);
+  private bracketService = inject(BracketService);
+  private cookieService = inject(CookieService);
+
+  protected limitDate = new Date(2024, 5, 29, 19, 45, 0);
+  protected currentDate = new Date();
+  protected isLoggedIn: boolean = false;
+  protected $state!: Observable<any>;
+  protected $today!: Observable<any>;
+  protected $bracket!: Observable<any>;
+  protected isOpen: boolean = false;
+  protected showLoader: boolean = false;
+  protected currentUser!: string;
 
   winnerR161: string = '-';
   winnerR162: string = '-';
@@ -45,59 +66,78 @@ export class BracketComponent {
 
   resultMode: boolean = false;
 
+  ngOnInit(): void {
+    
+    if (this.currentDate > this.limitDate) {
+      this.isOpen = false;
+    }
+    else {
+      this.isOpen = true;
+    }
+
+    this.stateService.userState.subscribe({
+      next: (res)=>{
+        if(res.last_name){
+          this.currentUser = res.last_name;
+          this.$bracket = this.bracketService.getUserBracket(res.last_name);
+        }
+      }
+    })
+
+  }
+
   selectedWinner(phase: string, selected: Event):void {
     let choice = selected.target as HTMLSelectElement;
-    console.log(phase, choice.value);
 
-      switch (phase) {
-        case 'r16-1':
-          (choice.value !== '-')? this.choiceR431 = choice.value : this.choiceR431 = null;
-        break;
-        case 'r16-2':
-          (choice.value !== '-')? this.choiceR411 = choice.value : this.choiceR411 = null;
-        break;
-        case 'r16-3':
-          (choice.value !== '-')? this.choiceR432 = choice.value : this.choiceR432 = null;
-        break;
-        case 'r16-4':
-          (choice.value !== '-')? this.choiceR412 = choice.value : this.choiceR412 = null;
-        break;
-        case 'r16-5':
-          (choice.value !== '-')? this.choiceR421 = choice.value : this.choiceR421 = null;
-        break;
-        case 'r16-6':
-          (choice.value !== '-')? this.choiceR422 = choice.value : this.choiceR422 = null;
-        break;
-        case 'r16-7':
-          (choice.value !== '-')? this.choiceR441 = choice.value : this.choiceR441 = null;
-        break;
-        case 'r16-8':
-          (choice.value !== '-')? this.choiceR442 = choice.value : this.choiceR442 = null;
-        break;
+    switch (phase) {
+      case 'r16-1':
+        (choice.value !== '-')? this.choiceR431 = choice.value : this.choiceR431 = null;
+      break;
+      case 'r16-2':
+        (choice.value !== '-')? this.choiceR411 = choice.value : this.choiceR411 = null;
+      break;
+      case 'r16-3':
+        (choice.value !== '-')? this.choiceR432 = choice.value : this.choiceR432 = null;
+      break;
+      case 'r16-4':
+        (choice.value !== '-')? this.choiceR412 = choice.value : this.choiceR412 = null;
+      break;
+      case 'r16-5':
+        (choice.value !== '-')? this.choiceR421 = choice.value : this.choiceR421 = null;
+      break;
+      case 'r16-6':
+        (choice.value !== '-')? this.choiceR422 = choice.value : this.choiceR422 = null;
+      break;
+      case 'r16-7':
+        (choice.value !== '-')? this.choiceR441 = choice.value : this.choiceR441 = null;
+      break;
+      case 'r16-8':
+        (choice.value !== '-')? this.choiceR442 = choice.value : this.choiceR442 = null;
+      break;
 
-        case 'r4-4':
-          (choice.value !== '-')? this.choiceS22 = choice.value : this.choiceS22 = null;
-        break;
-        case 'r4-3':
-          (choice.value !== '-')? this.choiceS21 = choice.value : this.choiceS21 = null;
-        break;
-        case 'r4-2':
-          (choice.value !== '-')? this.choiceS12 = choice.value : this.choiceS12 = null;
-        break;
-        case 'r4-1':
-          (choice.value !== '-')? this.choiceS11 = choice.value : this.choiceS11 = null;
-        break;
+      case 'r4-4':
+        (choice.value !== '-')? this.choiceS22 = choice.value : this.choiceS22 = null;
+      break;
+      case 'r4-3':
+        (choice.value !== '-')? this.choiceS21 = choice.value : this.choiceS21 = null;
+      break;
+      case 'r4-2':
+        (choice.value !== '-')? this.choiceS12 = choice.value : this.choiceS12 = null;
+      break;
+      case 'r4-1':
+        (choice.value !== '-')? this.choiceS11 = choice.value : this.choiceS11 = null;
+      break;
 
-        case 's2':
-          (choice.value !== '-')? this.choiceFinal2 = choice.value : this.choiceFinal2 = null;
-        break;
-        case 's1':
-          (choice.value !== '-')? this.choiceFinal1 = choice.value : this.choiceFinal1 = null;
-        break;
+      case 's2':
+        (choice.value !== '-')? this.choiceFinal2 = choice.value : this.choiceFinal2 = null;
+      break;
+      case 's1':
+        (choice.value !== '-')? this.choiceFinal1 = choice.value : this.choiceFinal1 = null;
+      break;
 
-        default:
-          break;
-      }
+      default:
+        break;
+    }
 
   }
 
@@ -105,7 +145,7 @@ export class BracketComponent {
     if(this.winnerEuro !=="_"){
       let bracketSelection = {
         "status": 'published',
-        "user": 'useriml',
+        "user": this.currentUser,
         "winner_r16_1" : this.winnerR161,
         "winner_r16_2" : this.winnerR162,
         "winner_r16_3" : this.winnerR163,
@@ -123,6 +163,15 @@ export class BracketComponent {
         "winner_euro": this.winnerEuro
       }
       console.log(bracketSelection);
+
+      this.showLoader = true;
+
+      this.bracketService.postBracket(bracketSelection).subscribe({
+        next: (res)=>{
+          this.showLoader = false;
+          location.reload();
+        }
+      });
     }
   }
 }
