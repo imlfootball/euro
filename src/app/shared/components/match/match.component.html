@@ -81,7 +81,7 @@
 
         <div class="grid justify-content-center mt-2 mb-2" [ngClass]="{'hidden': calcWinDrawOutcome }">
           <div class="col-12" >
-            <app-windraw [teamA]="match.team_a" [teamB]="match.team_b" [(outCome)]="matchOutcome" [disabled]="disabled" />
+            <app-windraw [teamA]="match.team_a" [teamB]="match.team_b" [phase]="match.phase" [(outCome)]="matchOutcome" [disabled]="disabled" />
           </div>
         </div>
 

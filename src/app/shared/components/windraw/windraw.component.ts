@@ -11,6 +11,8 @@ export class WindrawComponent {
   @Input() teamB!:string;
   @Input() outCome!: string;
   @Input() disabled: boolean = false;
+  @Input() phase!: string;
+
   @Output() outComeChange = new EventEmitter<string>();
 
   winDrawSelect(selected: string): void {
