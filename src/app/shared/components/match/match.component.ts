@@ -74,7 +74,7 @@ export class MatchComponent implements OnInit{
       this.closed = true;
     }
 
-    if(parseInt(this.match.id) === 1 || this.match.phase !== "Group Stage") {
+    if(parseInt(this.match.id) === 1) {
       this.calcWinDrawOutcome = true;
     }
 
