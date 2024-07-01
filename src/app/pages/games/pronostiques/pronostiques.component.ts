@@ -21,6 +21,7 @@ export class PronostiquesComponent {
   protected activeMatches: boolean = true;
 
   $groupedMatches!: Observable<{ [key: string]: Matches[] }>;
+  $playedMatches!: Observable<Matches[]>;
 
   ngOnInit(): void {
 
@@ -29,6 +30,8 @@ export class PronostiquesComponent {
     this.$groupedMatches = this.matchesService.getAllMatches().pipe(
       map(matches => this.groupMatchesByDate(matches))
     );
+
+    this.$playedMatches = this.matchesService.getAllMatches();
 
     this.stateService.userState.subscribe({
       next: (res) => {
@@ -59,6 +62,10 @@ export class PronostiquesComponent {
 
   getDates(groupedMatches: { [key: string]: Matches[] }): string[] {
     return Object.keys(groupedMatches).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+  }
+
+  getPlayedDates(groupedMatches: { [key: string]: Matches[] }): string[] {
+    return Object.keys(groupedMatches).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
   }
 
   compareDates(date1: string, date2: string): boolean {
