@@ -148,7 +148,7 @@ export class RankingcalculationService {
       }
 
       // First Game
-      if(game.phase === 'Group Stage' && game.id === 1){
+      if(game.phase === 'Group Stage' && game.id === 1 ){
         let point;
         (parseInt(game.fulltime_a) === parseInt(fulltime_a) && parseInt(game.fulltime_b) === parseInt(fulltime_b))? point = parseInt(fulltime_point) : point = 0;
 
@@ -157,7 +157,12 @@ export class RankingcalculationService {
 
       // Round of 16
       if(game.phase === 'Round of 16') {
+        let winnerPoint;
+        let fulltimePoint;
+        (game.winner_draw === winner_draw)? winnerPoint = winner_point : winnerPoint = 0;
+        (parseInt(game.fulltime_a) === parseInt(fulltime_a) && parseInt(game.fulltime_b) === parseInt(fulltime_b))? fulltimePoint = parseInt(fulltime_point) : fulltimePoint = 0;
 
+        finalPoint = finalPoint + winnerPoint + fulltimePoint;
       }
     }
 
