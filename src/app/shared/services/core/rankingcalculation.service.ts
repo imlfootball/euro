@@ -164,9 +164,35 @@ export class RankingcalculationService {
 
         finalPoint = finalPoint + winnerPoint + fulltimePoint;
       }
+
+      // Quarter finals
+      if(game.phase === 'Quarter-finals'){
+        
+        let winnerPoint;
+        let fulltimePoint;
+        let scorerPoint;
+        let gamescorers;
+
+        if(game.scorers) {
+          gamescorers = this.returnScorersObj(game.scorers);
+        }
+
+
+        (game.winner_draw === winner_draw)? winnerPoint = winner_point : winnerPoint = 0;
+        (parseInt(game.fulltime_a) === parseInt(fulltime_a) && parseInt(game.fulltime_b) === parseInt(fulltime_b))? fulltimePoint = parseInt(fulltime_point) : fulltimePoint = 0;
+        (gamescorers?.includes(scorers))? scorerPoint = scorer_point: scorerPoint = 0;
+
+        finalPoint = finalPoint + winnerPoint + fulltimePoint + scorerPoint;
+  
+      }
     }
 
     return finalPoint;
+  }
+
+  private returnScorersObj(scorersList: string){
+    debugger;
+    return scorersList.split(',').map(name => name.trim());
   }
 
   private updateRanking(rankingObj: any[]): void {
