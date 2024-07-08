@@ -191,7 +191,6 @@ export class RankingcalculationService {
   }
 
   private returnScorersObj(scorersList: string){
-    debugger;
     return scorersList.split(',').map(name => name.trim());
   }
 
