@@ -179,6 +179,9 @@
         <h4 class="mt-0 mb-4 text-3xl"><strong>{{ donePronostique.winner_draw }}</strong></h4>
         <ng-container *ngIf="match.fulltime">
           <h4 class="mt-0 mb-4 text-3xl"><strong>Score final :</strong> {{ donePronostique.fulltime_a }} - {{ donePronostique.fulltime_b }}</h4>
+          <ng-container *ngIf="donePronostique.scorer ">
+            <h5 class="mt-0 mb-4 text-xl"><strong>Buteur:</strong> {{ donePronostique.scorer }}</h5>
+          </ng-container>
         </ng-container>
       </div>
 
@@ -187,6 +190,9 @@
 
   <div class="matchResult mt-3" *ngIf="match.fulltime_a !== null && match.fulltime_b !== null">
     <h4 class="text-center">Résultat officiel du match</h4>
+    <h4 class="text-center flex justify-content-center align-items-center pl-5"><strong>{{ match.winner_draw }}</strong> <span class="ml-2 material-symbols-outlined">
+      editor_choice
+      </span></h4>
     <div class="flex">
       <div class="col-5 p-0">
         <span class="flex align-items-center justify-content-center">
