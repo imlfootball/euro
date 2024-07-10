@@ -166,7 +166,7 @@ export class RankingcalculationService {
       }
 
       // Quarter finals
-      if(game.phase === 'Quarter-finals'){
+      if(game.phase === 'Quarter-finals' || game.phase === 'Semi-finals'){
         
         let winnerPoint;
         let fulltimePoint;
