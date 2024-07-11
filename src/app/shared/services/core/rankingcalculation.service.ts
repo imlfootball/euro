@@ -166,10 +166,11 @@ export class RankingcalculationService {
       }
 
       // Quarter finals
-      if(game.phase === 'Quarter-finals' || game.phase === 'Semi-finals'){
-        
+      if(game.phase === 'Quarter-finals' || game.phase === 'Semi-finals' || game.phase === 'Final'){
+
         let winnerPoint;
         let fulltimePoint;
+        let halftimePoint;
         let scorerPoint;
         let gamescorers;
 
@@ -180,10 +181,11 @@ export class RankingcalculationService {
 
         (game.winner_draw === winner_draw)? winnerPoint = winner_point : winnerPoint = 0;
         (parseInt(game.fulltime_a) === parseInt(fulltime_a) && parseInt(game.fulltime_b) === parseInt(fulltime_b))? fulltimePoint = parseInt(fulltime_point) : fulltimePoint = 0;
+        (parseInt(game.halftime_a) === parseInt(halftime_a) && parseInt(game.halftime_b) === parseInt(halftime_b))? halftimePoint = parseInt(halftime_point) : halftimePoint = 0;
         (gamescorers?.includes(scorers))? scorerPoint = scorer_point: scorerPoint = 0;
 
-        finalPoint = finalPoint + winnerPoint + fulltimePoint + scorerPoint;
-  
+        finalPoint = finalPoint + halftimePoint + winnerPoint + fulltimePoint + scorerPoint;
+
       }
     }
 
