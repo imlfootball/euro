@@ -16,10 +16,12 @@ export class RankingComponent implements OnInit, OnDestroy {
 
   protected showLoader: boolean = true;
   protected $ranks!: Observable<any>;
+  protected $bracketRanks!: Observable<any>;
   protected latestRank!: any;
 
   ngOnInit():void {
     this.$ranks = this.rankCalcSercvice.getCurrentrankings();
+    this.$bracketRanks = this.rankCalcSercvice.getBracketRankings();
 
     this.$ranks.subscribe({
       next: (response)=>{
@@ -29,7 +31,7 @@ export class RankingComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             location.reload();
           }, 3000);
-        } 
+        }
 
         let idx = response.length - 1;
         this.latestRank = response[idx];
@@ -37,21 +39,10 @@ export class RankingComponent implements OnInit, OnDestroy {
         if(this.latestRank){
           this.showLoader = false;
         }
-
-        // else {
-        //   let idx = response.length - 1;
-        //   let today = new Date(this.formatDate(this.today));
-        //   let lastUpdate = new Date(response[idx].modified_on.substring(0, 10));
-        //   if(today > lastUpdate){
-        //     // this.updateRanks();
-        //     this.showLoader = false;
-        //   } else {
-        //     this.latestRank = response[idx];
-        //     this.showLoader = false;
-        //   }
-        // }
       }
     })
+
+    this.rankCalcSercvice.calcBracket();
   }
 
   updateRanks(): void {

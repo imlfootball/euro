@@ -7,6 +7,22 @@
   width: calc(100% + 2rem) !important;
 }
 
+.classementContainer {
+  height: 644px;
+  overflow-x: auto;
+  padding: 0 1rem 1rem 0;
+
+  tr {
+    width: 100%;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    background-color: #dddddd;
+  }
+}
+
 @media screen and (min-width: 576px){
   .filter {
     margin-top: -1rem;
